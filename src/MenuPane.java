@@ -9,13 +9,14 @@ public class MenuPane extends GraphicsPane {
 	private MainApplication program; 
 								
 	private GButton rect;
-	private final int BUTTON_SIZE = 50;
+	private final int BUTTON_SIZE_X = 200;
+	private final int BUTTON_SIZE_Y = 100;
 
 	public MenuPane(MainApplication app) {
 		super();
 		program = app;
-		rect = new GButton("Next", app.getWidth()/2-BUTTON_SIZE/2, app.getHeight()/2-BUTTON_SIZE/2, BUTTON_SIZE, BUTTON_SIZE);
-		rect.setFillColor(Color.RED);
+		rect = new GButton("Play", app.getWidth()/2-BUTTON_SIZE_X/2, app.getHeight()/2-BUTTON_SIZE_Y/2, BUTTON_SIZE_X, BUTTON_SIZE_Y);
+		rect.setFillColor(Color.GREEN);
 	}
 
 	@Override
