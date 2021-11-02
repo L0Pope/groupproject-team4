@@ -125,6 +125,7 @@ public class MainApplication extends GraphicsProgram {
 	public void switchToHighScore() {
 		switchToScreen(HighScore);
 	}
+	
 	/*
 	public void ENDGAME() {
 		new MainApplication().exit();

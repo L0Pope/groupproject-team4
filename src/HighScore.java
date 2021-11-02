@@ -12,7 +12,7 @@ public class HighScore extends GraphicsPane {
 	public HighScore(MainApplication app) {
 		super();
 		program = app;
-		para = new GParagraph("Press \"Escape\" to leave", 150, 300);
+		para = new GParagraph("Press \"Escape\"", 50, 500);
 		para.setFont("Comic Sans MS-24");
 	}
 

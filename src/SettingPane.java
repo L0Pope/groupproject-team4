@@ -14,7 +14,7 @@ public class SettingPane extends GraphicsPane {
 	public SettingPane(MainApplication app) {
 		super();
 		program = app;
-		rect = new GButton("Hello There", app.getWidth()/2-BUTTON_SIZE_X/2, app.getHeight()/2-BUTTON_SIZE_Y/2, BUTTON_SIZE_X, BUTTON_SIZE_Y);
+		rect = new GButton("Hello", app.getWidth()/2-BUTTON_SIZE_X/2, app.getHeight()/2-BUTTON_SIZE_Y/2, BUTTON_SIZE_X, BUTTON_SIZE_Y);
 		rect.setFillColor(Color.BLUE);
 	}
 
