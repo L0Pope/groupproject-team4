@@ -6,7 +6,7 @@ import acm.graphics.GObject;
 public class MenuPane extends GraphicsPane {
 	
 	// you will use program to get access to all of the GraphicsProgram calls
-	private MainApplication program; 
+	private MainApplication program;
 								
 	private GButton rect;
 	private GButton rect2;
