@@ -107,7 +107,9 @@ public class MainApplication extends GraphicsProgram {
 		setting = new SettingPane(this);
 		HighScore = new HighScore(this);
 		setupInteractions();
-		switchToMenu();
+		//switchToMenu();
+		//switchToHighScore();
+		switchToSetting();
 	}
 
 	public void switchToSetting() {

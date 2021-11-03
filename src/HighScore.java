@@ -1,6 +1,5 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 public class HighScore extends GraphicsPane {
@@ -8,11 +7,12 @@ public class HighScore extends GraphicsPane {
 	// you will use program to get access to all of the GraphicsProgram calls
 	private MainApplication program; 			
 	private GParagraph para;
+	
 
 	public HighScore(MainApplication app) {
 		super();
 		program = app;
-		para = new GParagraph("Press \"Escape\"", 50, 500);
+		para = new GParagraph("Escape", 0, 590);
 		para.setFont("Comic Sans MS-24");
 	}
 
@@ -37,6 +37,7 @@ public class HighScore extends GraphicsPane {
 	}
 }
 */
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == 27) {
