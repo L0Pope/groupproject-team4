@@ -23,7 +23,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	public static final int SPEED = 2;
 	public static final int MS = 50;
 	public static final int WINDOW_HEIGHT = 600;
-	public static final int WINDOW_WIDTH = 300;
+	public static final int WINDOW_WIDTH = 800;
 	private int numTimes = -1;
 	private Boolean right = true;
 	
@@ -32,6 +32,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		enemies = new ArrayList <GRect>();
 		movement = new Timer(MS, this);
 		addAnEnemy();
+		addSecondRowEnemy();
 		movement.start();
 		addMouseListeners();
 	}
@@ -44,13 +45,20 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	
 	private void addAnEnemy() {
 		for(int i = SIZE; i < WINDOW_WIDTH-SIZE/2; i += 50) {
-			GRect e = makeEnemy(i);
+			GRect e = makeEnemy(i,25);
 			enemies.add(e);
 			add(e);
 		}
 	}
-	public GRect makeEnemy(double x) {
-		GRect temp = new GRect(x-SIZE/2, SIZE, SIZE, SIZE);
+	private void addSecondRowEnemy() {
+		for(int i = SIZE*2; i < WINDOW_WIDTH-SIZE/2; i += 50) {
+			GRect e = makeEnemy(i,60);
+			enemies.add(e);
+			add(e);
+		}
+	}
+	public GRect makeEnemy(double x, double y) {
+		GRect temp = new GRect(x-SIZE/2, y, SIZE, SIZE);
 		temp.setColor(new Color(0,255,0));
 		temp.setFilled(true);
 		return temp;
