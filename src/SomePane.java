@@ -8,7 +8,7 @@ public class SomePane extends GraphicsPane {
 	// you will use program to get access to all of the GraphicsProgram calls
 	private MainApplication program; 
 
-	private GImage img;
+	//private GImage img;
 	private GParagraph para;
 	
 	//All of the comments are references to keep for our game.

@@ -10,6 +10,7 @@
  * and using showContents and hideContents
  */
 
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
@@ -60,6 +61,11 @@ public abstract class GraphicsPane implements Interfaceable {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+	}
+
+	public void actionPeformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

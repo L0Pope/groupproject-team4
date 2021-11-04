@@ -11,6 +11,7 @@ public class MenuPane extends GraphicsPane {
 	private GButton rect;
 	private GButton rect2;
 	private GButton rect3;
+	private GButton rect4;
 	private final int BUTTON_SIZE_X = 200;
 	private final int BUTTON_SIZE_Y = 100;
 	private final int STATIC_ADDER = 50;
@@ -24,7 +25,8 @@ public class MenuPane extends GraphicsPane {
 		rect2.setFillColor(Color.BLUE);
 		rect3 = new GButton("High Score", app.getWidth()/2-BUTTON_SIZE_X/2, app.getHeight()/2-BUTTON_SIZE_Y/2 + (STATIC_ADDER*2), BUTTON_SIZE_X, BUTTON_SIZE_Y);
 		rect3.setFillColor(Color.PINK);
-		
+		rect4 = new GButton("Quit", app.getWidth()/2-BUTTON_SIZE_X/2, app.getHeight()/2-BUTTON_SIZE_Y/2 + (STATIC_ADDER*4.5), BUTTON_SIZE_X, BUTTON_SIZE_Y);
+		rect4.setFillColor(Color.CYAN);
 	}
 
 	@Override
@@ -32,18 +34,19 @@ public class MenuPane extends GraphicsPane {
 		program.add(rect);
 		program.add(rect2);
 		program.add(rect3);
+		program.add(rect4); 
 	}
 
 	@Override
 	public void hideContents() {
-		program.remove(rect);
-		program.remove(rect2);
-		program.remove(rect3);
+		program.removeAll();
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
+		System.out.println(e.getX());
+		System.out.println(e.getY());
 		if (obj == rect) {
 			program.switchToSome();
 		}
@@ -52,6 +55,9 @@ public class MenuPane extends GraphicsPane {
 		}
 		if (obj == rect3) {
 			program.switchToHighScore();
+		}
+		if (obj == rect4) {
+			System.exit(0);
 		}
 	}
 }
