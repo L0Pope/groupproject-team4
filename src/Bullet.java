@@ -2,14 +2,14 @@ import acm.graphics.*;
 import acm.graphics.GImage;
 import acm.graphics.GOval;
 
-public class bullets extends Entity{
+public class Bullet extends Entity{
 	double dy; //velocity
 	int damage;
 	GImage sprite;
 	GOval tempSprite;
 
 
-	bullets(double x, double y, double dy, int damage){
+	Bullet(double x, double y, double dy, int damage){
 		this.x = x;
 		this.y = y;
 		this.dy = dy;
