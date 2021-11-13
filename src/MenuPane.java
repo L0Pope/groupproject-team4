@@ -49,14 +49,18 @@ public class MenuPane extends GraphicsPane {
 		System.out.println(e.getY());
 		if (obj == rect) {
 			program.switchToSome();
+			System.out.println("WELCOME TO PLAYING THE GAME");
 		}
 		if (obj == rect2) {
 			program.switchToSetting();
+			System.out.println("WELCOME TO THE SETTINGS");
 		}
 		if (obj == rect3) {
 			program.switchToHighScore();
+			System.out.println("WELCOME TO THE HIGH SCORE");
 		}
 		if (obj == rect4) {
+			System.out.println("GOODBYE MOON MAN");
 			System.exit(0);
 		}
 	}

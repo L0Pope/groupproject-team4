@@ -4,8 +4,10 @@ import acm.program.GraphicsProgram;
 
 public class MainApplication extends GraphicsProgram {
 	
-	public static final int WINDOW_WIDTH = 1920;
-	public static final int WINDOW_HEIGHT = 1080;
+	//public static final int WINDOW_WIDTH = 1920;
+	public static final int WINDOW_WIDTH = 800;
+	//public static final int WINDOW_HEIGHT = 1080;
+	public static final int WINDOW_HEIGHT = 600;
 	public static final String MUSIC_FOLDER = "sounds";
 
 	private GraphicsPane curScreen;
@@ -107,9 +109,9 @@ public class MainApplication extends GraphicsProgram {
 		setting = new SettingPane(this);
 		HighScore = new HighScore(this);
 		setupInteractions();
-		//switchToMenu();
+		switchToMenu();
 		//switchToHighScore();
-		switchToSetting();
+		//switchToSetting();
 	}
 
 	public void switchToSetting() {

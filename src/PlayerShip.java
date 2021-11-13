@@ -22,7 +22,8 @@ public class PlayerShip extends GraphicsProgram implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		
+		//try reading the inputs that are from the settings menu and seeing if the keypress = to the ascii value
+		//for example have forward == from the range 40-90 ect
 		if (e.getKeyCode() == e.VK_W) {
 			playerShip.move(100, 0);
 		} else if(key == e.VK_A) {

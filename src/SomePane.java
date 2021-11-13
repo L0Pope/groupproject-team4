@@ -47,6 +47,7 @@ public class SomePane extends GraphicsPane {
 		para.setText("You can\nleave this\nby pressing\n escape");
 		if(e.getKeyCode() == 27) {
 			program.switchToMenu();
+			System.out.println("Switching to Main Menu");
 		}
 	}
 }

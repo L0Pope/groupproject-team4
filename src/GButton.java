@@ -24,6 +24,10 @@ public class GButton extends GCompound {
 	public GButton(String label, double x, double y, double width, double height) {
 		this(label, x, y, width, height, Color.white);
 	}
+	
+	public GButton(char label, double x, double y, double width, double height) {
+		this(label, x, y, width, height, Color.white);
+	}
 
 	public GButton(String label, double x, double y, double width, double height, int r, int g, int b) {
 		this(label, x, y, width, height, new Color(r, g, b));
@@ -37,6 +41,26 @@ public class GButton extends GCompound {
 		rect.setFillColor(col);
 		add(rect);
 		message = new GLabel(label);
+		sizeLabelFont(message, width - BUFFER, height - BUFFER);
+		double centerX = width / 2 - message.getWidth() / 2;
+		double centerY = height / 2 + message.getAscent() / 4;
+		add(message, centerX, centerY);
+	}
+
+	public GButton(char label, double x, double y, double width, double height, int r, int g, int b) {
+		this(label, x, y, width, height, new Color(r, g, b));
+	}
+
+	public GButton(char label, double x, double y, double width, double height, Color col) {
+		super();
+		setLocation(x, y);
+		rect = new GRoundRect(0, 0, width, height);
+		rect.setFilled(true);
+		rect.setFillColor(col);
+		add(rect);
+		String temp;
+		temp = Character.toString(label);
+		message = new GLabel(temp);
 		sizeLabelFont(message, width - BUFFER, height - BUFFER);
 		double centerX = width / 2 - message.getWidth() / 2;
 		double centerY = height / 2 + message.getAscent() / 4;
@@ -64,5 +88,9 @@ public class GButton extends GCompound {
 
 	public void setColor(Color col) {
 		message.setColor(col);
+	}
+	
+	public void setText(String msg) {
+		message.setLabel(msg);
 	}
 }
