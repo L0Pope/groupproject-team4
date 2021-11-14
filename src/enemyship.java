@@ -15,7 +15,7 @@ import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
 
 public class enemyship extends GraphicsProgram implements ActionListener{
-	private ArrayList <GRect> enemies;
+	//private ArrayList <GRect> enemies;
 	private Timer movement;
 	private RandomGenerator rgen;
 	
@@ -25,45 +25,47 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	public static final int WINDOW_HEIGHT = 600;
 	public static final int WINDOW_WIDTH = 800;
 	private int numTimes = -1;
-	private Boolean right = true;
+	public Boolean right = true;
+	private int x, y;	
+	private GRect enemy;
+	
+	public enemyship(int x, int y) { //location of the ship
+		this.x=x;
+		this.y=y;
+	}
 	
 	public void run() {
 		rgen = RandomGenerator.getInstance();
-		enemies = new ArrayList <GRect>();
 		movement = new Timer(MS, this);
-		addAnEnemy();
-		addSecondRowEnemy();
+		enemy = new GRect(x-SIZE/2, y, SIZE, SIZE);
+		enemy.setColor(new Color(0,255, 0));
+		enemy.setFilled(true);
+		add(enemy);
 		movement.start();
 		addMouseListeners();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		numTimes ++;
-		
-		moveAllEnemiesOnce();
+		moveEnemy();
+	}
+	/*
+	private void addAnEnemy() {
+			GRect e = makeEnemy();
+			add(e);
+			//moveEnemy(e);
 	}
 	
-	private void addAnEnemy() {
-		for(int i = SIZE; i < WINDOW_WIDTH-SIZE/2; i += 50) {
-			GRect e = makeEnemy(i,25);
-			enemies.add(e);
-			add(e);
-		}
-	}
-	private void addSecondRowEnemy() {
-		for(int i = SIZE*2; i < WINDOW_WIDTH-SIZE/2; i += 50) {
-			GRect e = makeEnemy(i,60);
-			enemies.add(e);
-			add(e);
-		}
-	}
-	public GRect makeEnemy(double x, double y) {
+	public GRect makeEnemy() {
 		GRect temp = new GRect(x-SIZE/2, y, SIZE, SIZE);
 		temp.setColor(new Color(0,255,0));
 		temp.setFilled(true);
 		return temp;
 	}
-	private void moveAllEnemiesOnce() {
+	*/
+	
+	
+	private void moveEnemy() {
 		if(numTimes == 5) {
 			if(right) {
 				right = false;
@@ -75,14 +77,10 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 			}
 		}
 		if(right) {
-			for(GRect e:enemies) {
-					e.move(2, 0);		
-			}
+			enemy.move(2, 0);		
 		}
 		if(!right) {
-			for(GRect e:enemies) {
-				e.move(-2, 0);
-			}
+			enemy.move(-2, 0);
 		}
 	}
 	
@@ -91,6 +89,9 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	}
 	
 	public static void main(String args[]) {
-		new enemyship().start();
+		new enemyship(20,50).start();
+		
 	}
 }
+//add kill enemy function
+//change arraylist to single and make arraylist in main
