@@ -9,7 +9,7 @@ public class Bullet extends Entity{
 	GOval tempSprite;
 
 
-	Bullet(double x, double y, double dy, int damage){
+	public Bullet(double x, double y, double dy, int damage){
 		this.x = x;
 		this.y = y;
 		this.dy = dy;
@@ -21,14 +21,20 @@ public class Bullet extends Entity{
 	}
 		
 	public void update() {
-		//update position
+		//updates position
 		
 		y += dy;
 		tempSprite.move(0, dy);
 		
 		//check collision with hitbox
-		
-		
+	}
+	
+
+	public String toString() {
+		String s = new String();
+		s += x + " " + y + " " + dy + " " + damage;
+					 
+		return s;
 	}
 
 }
