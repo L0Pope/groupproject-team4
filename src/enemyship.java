@@ -49,21 +49,6 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		numTimes ++;
 		moveEnemy();
 	}
-	/*
-	private void addAnEnemy() {
-			GRect e = makeEnemy();
-			add(e);
-			//moveEnemy(e);
-	}
-	
-	public GRect makeEnemy() {
-		GRect temp = new GRect(x-SIZE/2, y, SIZE, SIZE);
-		temp.setColor(new Color(0,255,0));
-		temp.setFilled(true);
-		return temp;
-	}
-	*/
-	
 	
 	private void moveEnemy() {
 		if(numTimes == 5) {
@@ -77,11 +62,16 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 			}
 		}
 		if(right) {
-			enemy.move(2, 0);		
+			enemy.move(2, 0);	//may have to change to check setlocation 	
 		}
 		if(!right) {
 			enemy.move(-2, 0);
 		}
+	}
+	
+	private void killEnemy() {
+		System.out.println("Dead!");
+		remove(enemy);
 	}
 	
 	public void init() {
@@ -90,6 +80,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	
 	public static void main(String args[]) {
 		new enemyship(20,50).start();
+		
 		
 	}
 }
