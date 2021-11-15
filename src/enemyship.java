@@ -18,6 +18,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	//private ArrayList <GRect> enemies;
 	private Timer movement;
 	private RandomGenerator rgen;
+	private GraphicsProgram screen;
 	
 	public static final int SIZE = 25;
 	public static final int SPEED = 2;
@@ -29,9 +30,10 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	private int x, y;	
 	private GRect enemy;
 	
-	public enemyship(int x, int y) { //location of the ship
+	public enemyship(int x, int y, GraphicsProgram screen) { //location of the ship
 		this.x=x;
 		this.y=y;
+		this.screen = screen;
 	}
 	
 	public void run() {
@@ -46,7 +48,11 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		enemy = new GRect(x-SIZE/2, y, SIZE, SIZE);
 		enemy.setColor(new Color(0,255, 0));
 		enemy.setFilled(true);
-		add(enemy);
+		screen.add(enemy);
+		rgen = RandomGenerator.getInstance();
+		movement = new Timer(MS, this);
+		movement.start();
+		addMouseListeners();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -54,7 +60,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		moveEnemy();
 	}
 	
-	private void moveEnemy() {
+	public void moveEnemy() {
 		if(numTimes == 5) {
 			if(right) {
 				right = false;
@@ -83,7 +89,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	}
 	
 	public static void main(String args[]) {
-		new enemyship(20,50).start();
+		//new enemyship(20,50).start();
 		
 		
 	}
