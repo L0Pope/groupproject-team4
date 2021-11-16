@@ -15,6 +15,7 @@ public class SettingPane extends GraphicsPane {
 	private GButton rect3;
 	private GButton rect4;
 	private GButton ERROR;
+	private GButton escape;
 	private GParagraph para0;
 	private GParagraph para;
 	private GParagraph para2;
@@ -54,6 +55,7 @@ public class SettingPane extends GraphicsPane {
 		rect4 = new GButton(Right, 259, BUTTON_POS_Y+135, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		para4 = new GParagraph("Right", 404, BUTTON_POS_Y+160);
 		para4.setFont("Comic Sans MS-24");
+		escape = new GButton("Escape", 4, 549, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		//This just makes it so its easy to call later
 		ERROR = new GButton("This shouldnt have happen", 259, BUTTON_POS_Y, BUTTON_SIZE_X, BUTTON_SIZE_Y, Color.white);
 		ERROR.setFillColor(Color.black);
@@ -71,6 +73,7 @@ public class SettingPane extends GraphicsPane {
 		program.add(para2);
 		program.add(para3);
 		program.add(para4);
+		program.add(escape);
 	}
 
 	@Override
@@ -106,6 +109,12 @@ public class SettingPane extends GraphicsPane {
 			DownRec = false;
 			RightRec = true;
 		}
+		if(obj != ERROR) {
+			program.remove(ERROR);
+		}
+		if(obj == escape) {
+			program.switchToMenu();
+		}
 	}
 
 	@Override
@@ -120,13 +129,8 @@ public class SettingPane extends GraphicsPane {
 				UpRec = !UpRec;
 			}
 			else {
-				System.out.println("We did not expect this input LOL.");
 				box1 = true;
 				program.add(ERROR);
-			}
-			if(e.getKeyCode() == 27) {
-				program.remove(ERROR);
-				box1 = !box1;
 			}
 		}
 		
@@ -140,10 +144,6 @@ public class SettingPane extends GraphicsPane {
 				box2 = true;
 				program.add(ERROR);
 			}
-			if(e.getKeyCode() == 27) {
-				program.remove(ERROR);
-				box2 = !box2;
-			}
 		}
 		
 		if(DownRec) {
@@ -155,10 +155,6 @@ public class SettingPane extends GraphicsPane {
 			else {
 				box3 = true;
 				program.add(ERROR);
-			}
-			if(e.getKeyCode() == 27) {
-				program.remove(ERROR);
-				box3 = !box3;
 			}
 		}
 		
@@ -172,13 +168,10 @@ public class SettingPane extends GraphicsPane {
 				box4 = true;
 				program.add(ERROR);
 			}
-			if(e.getKeyCode() == 27) {
-				program.remove(ERROR);
-				box4 = !box4;
-			}
 		}
-		
-		
+		if(e.getKeyCode() == 27) {
+			program.remove(ERROR);
+		}
 	}
 }
 /*
