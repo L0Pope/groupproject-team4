@@ -49,11 +49,12 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		enemy.setColor(new Color(0,255, 0));
 		enemy.setFilled(true);
 		screen.add(enemy);
-		rgen = RandomGenerator.getInstance();
+		//rgen = RandomGenerator.getInstance();
 		movement = new Timer(MS, this);
 		movement.start();
-		addMouseListeners();
+		//addMouseListeners();
 	}
+	
 	
 	public void actionPerformed(ActionEvent e) {
 		numTimes ++;
