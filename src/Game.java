@@ -18,6 +18,7 @@ public class Game extends GraphicsProgram implements ActionListener{
 	private ArrayList <enemyship> enemies = new ArrayList<enemyship>();
 	public static final int WINDOW_HEIGHT = 600;
 	public static final int WINDOW_WIDTH = 800;
+	public static final int SIZE = 25;
 	enemyship enemyShip;
 	
 	
@@ -26,12 +27,28 @@ public class Game extends GraphicsProgram implements ActionListener{
 	}
 	
 	public void run() {
-		System.out.println("We are going to print a single ship!");
-		enemyShip = new enemyship(20,50, this);
-		enemyShip = new enemyship(40, 50, this);
-		enemyShip.makeEnemy();		
+		addEnemies();
+		moveEnemies();
+				
 	}
-
+	
+	//Function Adds Two Rows of Enemies to An arraylist
+	private void addEnemies() {
+		for(int i = SIZE; i < 800/*WINDOW_WIDTH-SIZE/2*/; i += 50) {
+			enemyShip = new enemyship(i, 25, this);
+			enemies.add(enemyShip);
+		}
+		for(int i = SIZE+150; i < 650; i+=50) {
+			enemyShip = new enemyship(i, 75, this);
+			enemies.add(enemyShip);
+		}
+	}
+	//Function Looks into the Arraylist and places the enemies onto the screen
+	private void moveEnemies() {
+		for(enemyship e:enemies) {
+			e.makeEnemy();
+		}
+	}
 	
 
 	public static void main(String[] args) {

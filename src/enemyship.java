@@ -30,6 +30,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	private int x, y;	
 	private GRect enemy;
 	
+	//Each EnemyShip has its own coordinates, use x and y to locate it 
 	public enemyship(int x, int y, GraphicsProgram screen) { //location of the ship
 		this.x=x;
 		this.y=y;
@@ -44,22 +45,23 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		addMouseListeners();
 	}
 	
+	//Makes Single Grect that also has a timer associated with it
 	public void makeEnemy() {
 		enemy = new GRect(x-SIZE/2, y, SIZE, SIZE);
 		enemy.setColor(new Color(0,255, 0));
 		enemy.setFilled(true);
 		screen.add(enemy);
-		rgen = RandomGenerator.getInstance();
 		movement = new Timer(MS, this);
 		movement.start();
-		addMouseListeners();
 	}
 	
+	//Calls to the Function that will move the enemies left and right
 	public void actionPerformed(ActionEvent e) {
 		numTimes ++;
 		moveEnemy();
 	}
 	
+	//Utilizes the timer so that it will move left and right everytime the timer reaches 5
 	public void moveEnemy() {
 		if(numTimes == 5) {
 			if(right) {
@@ -79,6 +81,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		}
 	}
 	
+	//Call this to Delete the Gobject
 	private void killEnemy() {
 		System.out.println("Dead!");
 		remove(enemy);
