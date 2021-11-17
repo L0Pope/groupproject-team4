@@ -27,12 +27,12 @@ public class Game extends GraphicsProgram implements ActionListener{
 	}
 	
 	public void run() {
-		System.out.println("We are going to print a single ship!");
 		addEnemies();
 		moveEnemies();
 				
 	}
 	
+	//Function Adds Two Rows of Enemies to An arraylist
 	private void addEnemies() {
 		for(int i = SIZE; i < 800/*WINDOW_WIDTH-SIZE/2*/; i += 50) {
 			enemyShip = new enemyship(i, 25, this);
@@ -43,7 +43,7 @@ public class Game extends GraphicsProgram implements ActionListener{
 			enemies.add(enemyShip);
 		}
 	}
-	
+	//Function Looks into the Arraylist and places the enemies onto the screen
 	private void moveEnemies() {
 		for(enemyship e:enemies) {
 			e.makeEnemy();
