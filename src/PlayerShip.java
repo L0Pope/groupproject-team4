@@ -1,42 +1,37 @@
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
+import java.awt.Color;
 import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 
-public class PlayerShip extends GraphicsProgram implements KeyListener{
-	private GRect playerShip;
-	private int x = 400, y = 400;
-	private final static int SPEED = 10;
-	private final static int WINDOW_WIDTH = 600;
-	private final static int WINDOW_HEIGHT = 600;
+public class PlayerShip {
+	public GRect playerShip;
+	public int x = 400, y = 400;
+	private GraphicsProgram screen;
+	private final static int SPEED = 5;
 	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
+	//Function adds game screen to PlayerShip class
+	public PlayerShip(GraphicsProgram screen) {
+		this.screen = screen;
+	}
 		
-		if (key == e.VK_W) {
+	//Function creates playerShip and adds it to game screen
+	public void makePlayerShip() {
+		playerShip = new GRect(x, y, 50,50);
+		playerShip.setColor(new Color(102, 0, 153));
+		playerShip.setFilled(true);
+		screen.add(playerShip);
+	}
+	
+	//Function controls playerShip image movement
+	public void move(int key) {
+		if (key == 1) {
 			playerShip.move(0, -SPEED);
-		} else if(key == e.VK_A) {
+		} else if (key == 2) {
 			playerShip.move(-SPEED, 0);
-		} else if(key == e.VK_S) {
+		} else if (key == 3) {
 			playerShip.move(0, SPEED);
-		} else if (key == e.VK_D) {
+		} else {
 			playerShip.move(SPEED, 0);
 		}
-}
-		
-	public void run() {
-		init();
-		playerShip = new GRect(x, y, 50,50);
-		add(playerShip);
 	}
 	
-	public void init() {
-		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		addKeyListeners();
-	}
-	
-	public static void main(String[] args) {
-		new PlayerShip().start();
-	}
 }
