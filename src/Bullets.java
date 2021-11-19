@@ -12,7 +12,7 @@ public class Bullets  {
 	}
 	
 		
-	public void ß(){
+	public void update(){
 		
 		for(Bullet b : bullets) {
 			b.update();
