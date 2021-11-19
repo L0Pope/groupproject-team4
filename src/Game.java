@@ -74,6 +74,8 @@ public class Game extends GraphicsProgram implements ActionListener{
 			playerShip.move(3);
 		} else if (key == e.VK_D) {
 			playerShip.move(4);
+		} else if (key == e.VK_SPACE) {
+			playerShip.move(5);
 		}
 	}
 	
