@@ -22,6 +22,7 @@ public class Game extends GraphicsProgram implements ActionListener{
 	public static final int SIZE = 25;
 	//private static final int SPEED = 5;
 	enemyship enemyShip;
+	enemyship bossShip;
 	PlayerShip playerShip;
 	
 	
@@ -30,8 +31,10 @@ public class Game extends GraphicsProgram implements ActionListener{
 	}
 	
 	public void run() {
-		addEnemies();
-		moveEnemies();
+		//addEnemies();
+		//moveEnemies();
+		addBoss();
+		moveBoss();
 		makePlayerShip();
 		//playerShip.addKeyListeners();
 	}
@@ -39,11 +42,11 @@ public class Game extends GraphicsProgram implements ActionListener{
 	//Function Adds Two Rows of Enemies to An arraylist
 	private void addEnemies() {
 		for(int i = SIZE; i < 800/*WINDOW_WIDTH-SIZE/2*/; i += 50) {
-			enemyShip = new enemyship(i, 25, this);
+			enemyShip = new enemyship(shipType.ENEMYSHIP, i, 25, this);
 			enemies.add(enemyShip);
 		}
 		for(int i = SIZE+150; i < 650; i+=50) {
-			enemyShip = new enemyship(i, 75, this);
+			enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, this);
 			enemies.add(enemyShip);
 		}
 	}
@@ -52,6 +55,12 @@ public class Game extends GraphicsProgram implements ActionListener{
 		for(enemyship e:enemies) {
 			e.makeEnemy();
 		}
+	}
+	private void addBoss() {
+		bossShip = new enemyship(shipType.BOSSSHIP, 20, 50, this);
+	}
+	private void moveBoss() {
+		bossShip.makeBoss();
 	}
 	
 	//Calls the PlayerShip class to create and add playerShip onto the screen

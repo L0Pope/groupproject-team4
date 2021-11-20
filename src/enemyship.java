@@ -15,10 +15,10 @@ import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
 
 public class enemyship extends GraphicsProgram implements ActionListener{
-	//private ArrayList <GRect> enemies;
 	private Timer movement;
 	private RandomGenerator rgen;
 	private GraphicsProgram screen;
+	private shipType typeShip;
 	
 	public static final int SIZE = 25;
 	public static final int SPEED = 2;
@@ -31,18 +31,19 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	private GRect enemy;
 	
 	//Each EnemyShip has its own coordinates, use x and y to locate it 
-	public enemyship(int x, int y, GraphicsProgram screen) { //location of the ship
+	public enemyship(shipType typeShip, int x, int y, GraphicsProgram screen) { //location of the ship
+		this.typeShip = typeShip;
 		this.x=x;
 		this.y=y;
 		this.screen = screen;
 	}
 	
 	public void run() {
-		rgen = RandomGenerator.getInstance();
-		movement = new Timer(MS, this);
-		makeEnemy();
-		movement.start();
-		addMouseListeners();
+		//rgen = RandomGenerator.getInstance();
+		//movement = new Timer(MS, this);
+		makeBoss();
+		//movement.start();
+		//addMouseListeners();
 	}
 	
 	//Makes Single Grect that also has a timer associated with it
@@ -55,6 +56,16 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		movement.start();
 	}
 	
+	public void makeBoss() {
+		enemy = new GRect(x-SIZE/2, y, SIZE*4, SIZE*4);
+		enemy.setColor(new Color(0,255,0));
+		enemy.setFilled(true);
+		//add(enemy);
+		screen.add(enemy); // enable this for game.java
+		movement = new Timer(MS, this);
+		movement.start();
+	}
+	
 	//Calls to the Function that will move the enemies left and right
 	public void actionPerformed(ActionEvent e) {
 		numTimes ++;
@@ -63,21 +74,41 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	
 	//Utilizes the timer so that it will move left and right everytime the timer reaches 5
 	public void moveEnemy() {
-		if(numTimes == 5) {
+		if(typeShip == shipType.ENEMYSHIP) {
+			if(numTimes == 5) {
+				if(right) {
+					right = false;
+					numTimes =0;
+				}
+				else if(!right) {
+					right = true;
+					numTimes = 0;
+				}
+			}
 			if(right) {
-				right = false;
-				numTimes =0;
+				enemy.move(2, 0);	//may have to change to check setlocation 	
 			}
-			else if(!right) {
-				right = true;
-				numTimes = 0;
+			if(!right) {
+				enemy.move(-2, 0);
 			}
 		}
-		if(right) {
-			enemy.move(2, 0);	//may have to change to check setlocation 	
-		}
-		if(!right) {
-			enemy.move(-2, 0);
+		else {
+			if(numTimes == 130) { // if x is at the end of screen switch
+				if(right) {
+					right = false;
+					numTimes = 0;
+				}
+				else if(!right) {
+					right = true;
+					numTimes = 0;
+				}
+			}
+			if(right) {
+				enemy.move(5, 0);
+			}
+			if(!right) {
+				enemy.move(-5, 0);
+			}
 		}
 	}
 	
@@ -92,7 +123,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	}
 	
 	public static void main(String args[]) {
-		//new enemyship(20,50).start();
+		//new enemyship(shipType.BOSSSHIP, 20,50).start();
 		
 		
 	}
