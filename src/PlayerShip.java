@@ -1,17 +1,19 @@
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
+import java.awt.Color;
 import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 
-public class PlayerShip extends GraphicsProgram implements KeyListener{
-	private GRect playerShip;
-	private int x = 400, y = 400;
+
+public class PlayerShip {
+	public GRect playerShip;
+	public int x = 400, y = 400;
+	private GraphicsProgram screen;
 	private Bullets bullets;
-	private final static int SPEED = 10;
-	private final static int WINDOW_WIDTH = 600;
-	private final static int WINDOW_HEIGHT = 600;
-	
-	
+	private final static int SPEED = 5;
+
+	//Function adds game screen to PlayerShip class
+	public PlayerShip(GraphicsProgram screen) {
+		this.screen = screen;
+	}
 	
 	public PlayerShip(){
 		bullets = new Bullets();
@@ -27,43 +29,35 @@ public class PlayerShip extends GraphicsProgram implements KeyListener{
 		bullets.addBullet(new Bullet(x,y, 5, 1));
 	}
 	
+	//Function creates playerShip and adds it to game screen
+	public void makePlayerShip() {
+		playerShip = new GRect(x, y, 50,50);
+		playerShip.setColor(new Color(102, 0, 153));
+		playerShip.setFilled(true);
+		screen.add(playerShip);
+	}
 	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		
-		if (key == e.VK_W) {
+	//Function controls playerShip image movement
+	public void move(int key) {
+		if (key == 1) {
 			y -= SPEED;
 			playerShip.move(0, -SPEED);
-		} else if(key == e.VK_A) {
+			
+		} else if (key == 2) {
 			x -= SPEED;
 			playerShip.move(-SPEED, 0);
-		} else if(key == e.VK_S) {
+			
+		} else if (key == 3) {
 			y += SPEED;
 			playerShip.move(0, SPEED);
-		} else if (key == e.VK_D) {
+			
+		} else if (key == 4){
 			x += SPEED;
 			playerShip.move(SPEED, 0);
-		} else if (key == e.VK_SPACE) {
+			
+		} else if (key == 5) {
 			fireBullet();
 		}
 		
-		
-}
-		
-	public void run() {
-		init();
-		playerShip = new GRect(x, y, 50,50);
-		add(playerShip);
-		
-	}
-	
-	public void init() {
-		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-		addKeyListeners();
-	}
-	
-	public static void main(String[] args) {
-		new PlayerShip().start();
 	}
 }

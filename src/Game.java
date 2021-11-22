@@ -17,13 +17,14 @@ import acm.util.RandomGenerator;
 
 public class Game extends GraphicsPane implements ActionListener{
 	private MainApplication program;
+	private SettingPane setting;
 	private ArrayList <enemyship> enemies = new ArrayList<enemyship>();
 	public static final int WINDOW_HEIGHT = 600;
 	public static final int WINDOW_WIDTH = 800;
 	public static final int SIZE = 25;
 
 	//private static final int SPEED = 5;
-
+	
 	enemyship enemyShip;
 	enemyship bossShip;
 	PlayerShip playerShip;
@@ -31,8 +32,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	Game(MainApplication program){
 		this.program = program;
 		//run();
-	}
-	
+	}	
 	
 	public void init() {
 		program.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -100,18 +100,24 @@ public class Game extends GraphicsPane implements ActionListener{
 	//KeyListeners used to move playerShip using WASD
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		
-		if (key == e.VK_W) {
+		int key = e.getKeyChar();
+		char forward = program.getForward();
+		char left = program.getLeft();
+		char down = program.getDown();
+		char right = program.getRight();
+		if (key == forward) {
 			playerShip.move(1);
-		} else if(key == e.VK_A) {
+		} else if(key == left) {
 			playerShip.move(2);
-		} else if(key == e.VK_S) {
+		} else if(key == down) {
 			playerShip.move(3);
-		} else if (key == e.VK_D) {
+		} else if (key == right) {
 			playerShip.move(4);
 		} else if (key == e.VK_SPACE) {
 			playerShip.move(5);
+		}
+		if(key == e.VK_ESCAPE) {
+			program.switchToMenu();
 		}
 	}
 	

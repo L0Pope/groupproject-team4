@@ -1,11 +1,11 @@
 
 public enum shipType {
-	enemyShip, bossShip, playerShip;
+	ENEMYSHIP, BOSSSHIP, PLAYERSHIP;
 	public String toSring() {
 		switch(this){
-		case enemyShip: return "enemyship";
-		case bossShip: return "bossShip";
-		case playerShip: return "playership";
+		case ENEMYSHIP: return "enemyship";
+		case BOSSSHIP: return "bossShip";
+		case PLAYERSHIP: return "playership";
 		}
 		return "n/a";
 	}

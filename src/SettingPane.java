@@ -61,7 +61,40 @@ public class SettingPane extends GraphicsPane {
 		ERROR.setFillColor(Color.black);
 		ERROR.setColor(Color.white);
 	}
-//if ascii(w) || ascii(i) ---> if x>
+	
+	public char getForward() {
+		return Forward;
+	}
+
+	public void setForward(char forward) {
+		Forward = forward;
+	}
+
+	public char getLeft() {
+		return Left;
+	}
+
+	public void setLeft(char left) {
+		Left = left;
+	}
+
+	public char getDown() {
+		return Down;
+	}
+
+	public void setDown(char down) {
+		Down = down;
+	}
+
+	public char getRight() {
+		return Right;
+	}
+	
+	public void setRight(char right) {
+		Right = right;
+	}
+	
+	//if ascii(w) || ascii(i) ---> if x>
 	@Override
 	public void showContents() {
 		program.add(rect);
@@ -124,8 +157,7 @@ public class SettingPane extends GraphicsPane {
 			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
 				Forward = e.getKeyChar();
 				//might need a location call
-				System.out.println(Forward);
-				rect.setText(String.valueOf(Forward));
+				rect.setText(String.valueOf(Forward).toUpperCase());
 				UpRec = !UpRec;
 			}
 			else {
@@ -137,7 +169,7 @@ public class SettingPane extends GraphicsPane {
 		if(LeftRec) {
 			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
 				Left = e.getKeyChar();
-				rect2.setText(String.valueOf(Left));
+				rect2.setText(String.valueOf(Left).toUpperCase());
 				LeftRec = !LeftRec;
 			}
 			else {
@@ -149,7 +181,7 @@ public class SettingPane extends GraphicsPane {
 		if(DownRec) {
 			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
 				Down = e.getKeyChar();
-				rect3.setText(String.valueOf(Down));
+				rect3.setText(String.valueOf(Down).toUpperCase());
 				DownRec = !DownRec;
 			}
 			else {
@@ -161,7 +193,7 @@ public class SettingPane extends GraphicsPane {
 		if(RightRec) {
 			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
 				Right = e.getKeyChar();
-				rect4.setText(String.valueOf(Right));
+				rect4.setText(String.valueOf(Right).toUpperCase());
 				RightRec = !RightRec;
 			}
 			else {

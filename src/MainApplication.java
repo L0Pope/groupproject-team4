@@ -145,4 +145,20 @@ public class MainApplication extends GraphicsProgram {
 	public static void main(String[] args) {
 		new MainApplication().start();
 	}
+
+	public char getForward() {
+		return setting.getForward();
+	}
+
+	public char getLeft() {
+		return setting.getLeft();
+	}
+
+	public char getDown() {
+		return setting.getDown();
+	}
+	
+	public char getRight() {
+		return setting.getRight();
+	}
 }
