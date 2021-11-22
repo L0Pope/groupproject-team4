@@ -15,6 +15,7 @@ public class MainApplication extends GraphicsProgram {
 	private MenuPane menu;
 	private SettingPane setting;
 	private HighScore HighScore;
+	private Game gameScreen;
 	
 	/* Method: setupInteractions
 	 * -------------------------
@@ -108,6 +109,7 @@ public class MainApplication extends GraphicsProgram {
 		menu = new MenuPane(this);
 		setting = new SettingPane(this);
 		HighScore = new HighScore(this);
+		gameScreen = new Game(this);
 		setupInteractions();
 		switchToMenu();
 		//switchToHighScore();
@@ -124,6 +126,10 @@ public class MainApplication extends GraphicsProgram {
 
 	public void switchToSome() {
 		switchToScreen(somePane);
+	}
+	
+	public void switchToPlay() {
+		switchToScreen(gameScreen);
 	}
 	
 	public void switchToHighScore() {
