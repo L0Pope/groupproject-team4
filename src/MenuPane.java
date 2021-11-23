@@ -48,7 +48,7 @@ public class MenuPane extends GraphicsPane {
 		System.out.println(e.getX());
 		System.out.println(e.getY());
 		if (obj == rect) {
-			program.switchToSome();
+			program.switchToPlay();
 			System.out.println("WELCOME TO PLAYING THE GAME");
 		}
 		if (obj == rect2) {

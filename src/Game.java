@@ -15,19 +15,27 @@ import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
 
-public class Game extends GraphicsProgram implements ActionListener{
+public class Game extends GraphicsPane implements ActionListener{
+	private MainApplication program;
+	private SettingPane setting;
 	private ArrayList <enemyship> enemies = new ArrayList<enemyship>();
 	public static final int WINDOW_HEIGHT = 600;
 	public static final int WINDOW_WIDTH = 800;
 	public static final int SIZE = 25;
+
 	//private static final int SPEED = 5;
+	
 	enemyship enemyShip;
 	enemyship bossShip;
 	PlayerShip playerShip;
 	
+	Game(MainApplication program){
+		this.program = program;
+		//run();
+	}	
 	
 	public void init() {
-		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		program.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	}
 	
 	public void run() {
@@ -41,12 +49,14 @@ public class Game extends GraphicsProgram implements ActionListener{
 	
 	//Function Adds Two Rows of Enemies to An arraylist
 	private void addEnemies() {
+		
 		for(int i = SIZE; i < 800/*WINDOW_WIDTH-SIZE/2*/; i += 50) {
-			enemyShip = new enemyship(shipType.ENEMYSHIP, i, 25, this);
+			enemyShip = new enemyship(shipType.ENEMYSHIP, i, 25, program);
 			enemies.add(enemyShip);
 		}
+		
 		for(int i = SIZE+150; i < 650; i+=50) {
-			enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, this);
+			enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, program);
 			enemies.add(enemyShip);
 		}
 	}
@@ -57,39 +67,69 @@ public class Game extends GraphicsProgram implements ActionListener{
 		}
 	}
 	private void addBoss() {
-		bossShip = new enemyship(shipType.BOSSSHIP, 20, 50, this);
+		bossShip = new enemyship(shipType.BOSSSHIP, 20, 50, program);
 	}
 	private void moveBoss() {
 		bossShip.makeBoss();
 	}
 	
+
+	@Override
+	public void showContents() {
+		run();
+	}
+	
+	@Override
+	public void hideContents() {
+		program.removeAll();
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		
+	}
+
+
 	//Calls the PlayerShip class to create and add playerShip onto the screen
 	private void makePlayerShip() {
-		playerShip = new PlayerShip(this);
+		playerShip = new PlayerShip(program);
 		playerShip.makePlayerShip();
-		addKeyListeners();
+		//addKeyListeners();
 	}
 	
 	//KeyListeners used to move playerShip using WASD
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		
-		if (key == e.VK_W) {
+		int key = e.getKeyChar();
+		char forward = program.getForward();
+		char left = program.getLeft();
+		char down = program.getDown();
+		char right = program.getRight();
+		if (key == forward) {
 			playerShip.move(1);
-		} else if(key == e.VK_A) {
+		} else if(key == left) {
 			playerShip.move(2);
-		} else if(key == e.VK_S) {
+		} else if(key == down) {
 			playerShip.move(3);
-		} else if (key == e.VK_D) {
+		} else if (key == right) {
 			playerShip.move(4);
 		} else if (key == e.VK_SPACE) {
 			playerShip.move(5);
+		}
+		if(key == e.VK_ESCAPE) {
+			program.switchToMenu();
 		}
 	}
 	
 	//Test Test
 	public static void main(String[] args) {
-		new Game().start();
+		//new Game().start();
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
