@@ -1,6 +1,7 @@
 import java.awt.Color;
 import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
+import acm.graphics.GOval;
 
 
 public class PlayerShip {
@@ -13,20 +14,18 @@ public class PlayerShip {
 	//Function adds game screen to PlayerShip class
 	public PlayerShip(GraphicsProgram screen) {
 		this.screen = screen;
-	}
-	
-	public PlayerShip(){
 		bullets = new Bullets();
 	}
 	
 	
 	public void update() {
-		bullets.update();	
+		bullets.update();
+//		removeBulletsOutOfBounds();
 	}
 	
 	
 	public void fireBullet(){
-		bullets.addBullet(new Bullet(x,y, 5, 1));
+		bullets.addBullet(new Bullet(x,y, -5, 1, screen), this);
 	}
 	
 	//Function creates playerShip and adds it to game screen
@@ -57,7 +56,10 @@ public class PlayerShip {
 			
 		} else if (key == 5) {
 			fireBullet();
+			update();
 		}
 		
 	}
+
+	
 }
