@@ -58,11 +58,11 @@ public class Bullet extends Entity{
 
 	
 
-	public String toString() {
-		String s = new String();
-		s += x + " " + y + " " + dy + " " + damage;
+	//public String toString() {
+	//	String s = new String();
+	//	s += x + " " + y + " " + dy + " " + damage;
 					 
-		return s;
-	}
+	//	return s;
+	//}
 
 }
