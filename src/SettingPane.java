@@ -33,6 +33,10 @@ public class SettingPane extends GraphicsPane {
 	private char Left = 'A';
 	private char Down = 'S';
 	private char Right = 'D';
+	private int ForwardLoc = 87;
+	private int LeftLoc = 65;
+	private int DownLoc = 83;
+	private int RightLoc = 68;
 	private final int BUTTON_SIZE_X = 300;
 	private final int BUTTON_SIZE_Y = 200;
 	private final int BUTTON_POS_Y = 100;
@@ -94,6 +98,38 @@ public class SettingPane extends GraphicsPane {
 		Right = right;
 	}
 	
+	public int getForwardLoc() {
+		return ForwardLoc;
+	}
+
+	public void setForwardLoc(int forwardLoc) {
+		ForwardLoc = forwardLoc;
+	}
+
+	public int getLeftLoc() {
+		return LeftLoc;
+	}
+
+	public void setLeftLoc(int leftLoc) {
+		LeftLoc = leftLoc;
+	}
+
+	public int getDownLoc() {
+		return DownLoc;
+	}
+
+	public void setDownLoc(int downLoc) {
+		DownLoc = downLoc;
+	}
+
+	public int getRightLoc() {
+		return RightLoc;
+	}
+
+	public void setRightLoc(int rightLoc) {
+		RightLoc = rightLoc;
+	}
+
 	//if ascii(w) || ascii(i) ---> if x>
 	@Override
 	public void showContents() {
@@ -156,6 +192,7 @@ public class SettingPane extends GraphicsPane {
 		if(UpRec) {
 			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
 				Forward = e.getKeyChar();
+				ForwardLoc = e.getKeyCode();
 				//might need a location call
 				rect.setText(String.valueOf(Forward).toUpperCase());
 				UpRec = !UpRec;
@@ -169,6 +206,7 @@ public class SettingPane extends GraphicsPane {
 		if(LeftRec) {
 			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
 				Left = e.getKeyChar();
+				LeftLoc = e.getKeyCode();
 				rect2.setText(String.valueOf(Left).toUpperCase());
 				LeftRec = !LeftRec;
 			}
@@ -181,6 +219,7 @@ public class SettingPane extends GraphicsPane {
 		if(DownRec) {
 			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
 				Down = e.getKeyChar();
+				DownLoc = e.getKeyCode();
 				rect3.setText(String.valueOf(Down).toUpperCase());
 				DownRec = !DownRec;
 			}
@@ -193,6 +232,7 @@ public class SettingPane extends GraphicsPane {
 		if(RightRec) {
 			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
 				Right = e.getKeyChar();
+				RightLoc = e.getKeyCode();
 				rect4.setText(String.valueOf(Right).toUpperCase());
 				RightRec = !RightRec;
 			}

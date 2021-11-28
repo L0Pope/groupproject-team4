@@ -145,7 +145,7 @@ public class MainApplication extends GraphicsProgram {
 	public static void main(String[] args) {
 		new MainApplication().start();
 	}
-
+	/*
 	public char getForward() {
 		return setting.getForward();
 	}
@@ -161,4 +161,23 @@ public class MainApplication extends GraphicsProgram {
 	public char getRight() {
 		return setting.getRight();
 	}
+	*/
+
+	public int getForward() {
+		return setting.getForwardLoc();
+	}
+	
+	public int getLeft() {
+		return setting.getLeftLoc();
+	}
+	
+	public int getDown() {
+		return setting.getDownLoc();
+	}
+	
+	public int getRight() {
+		return setting.getRightLoc();
+	}
+	
+
 }

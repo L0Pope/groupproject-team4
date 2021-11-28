@@ -100,11 +100,11 @@ public class Game extends GraphicsPane implements ActionListener{
 	//KeyListeners used to move playerShip using WASD
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyChar();
-		char forward = program.getForward();
-		char left = program.getLeft();
-		char down = program.getDown();
-		char right = program.getRight();
+		int key = e.getKeyCode();
+		int forward = program.getForward();
+		int left = program.getLeft();
+		int down = program.getDown();
+		int right = program.getRight();
 		if (key == forward) {
 			playerShip.move(1);
 		} else if(key == left) {
