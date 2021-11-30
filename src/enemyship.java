@@ -29,6 +29,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	public Boolean right = true;
 	private int x, y;	
 	private GRect enemy;
+	private Bullets bullets;
 	
 	//Each EnemyShip has its own coordinates, use x and y to locate it 
 	public enemyship(shipType typeShip, int x, int y, GraphicsProgram screen) { //location of the ship
@@ -36,6 +37,28 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		this.x=x;
 		this.y=y;
 		this.screen = screen;
+		bullets = new Bullets();
+		rgen = RandomGenerator.getInstance();
+	
+	}	
+	
+	public void update() {
+		bullets.update();
+		int rand = rgen.nextInt(100);
+		if(typeShip == shipType.BOSSSHIP) {
+			if(rand < 10) {
+				fireBullet();
+			}
+		}else if(typeShip == shipType.ENEMYSHIP) {
+			if(rand <3)
+				fireBullet();
+		}
+			
+//		removeBulletsOutOfBounds();
+	}
+	
+	public void fireBullet(){
+		bullets.addBullet(new Bullet(x,y, 5, 1, screen));
 	}
 	
 	public void run() {
@@ -70,6 +93,8 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		numTimes ++;
 		moveEnemy();
+		// remove update from here
+		update();
 	}
 	
 	//Utilizes the timer so that it will move left and right everytime the timer reaches 5
@@ -86,9 +111,11 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 				}
 			}
 			if(right) {
+				x += 2;
 				enemy.move(2, 0);	//may have to change to check setlocation 	
 			}
 			if(!right) {
+				x +=-2;
 				enemy.move(-2, 0);
 			}
 		}
@@ -104,9 +131,11 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 				}
 			}
 			if(right) {
+				x +=5;
 				enemy.move(5, 0);
 			}
 			if(!right) {
+				x +=-5;
 				enemy.move(-5, 0);
 			}
 		}
