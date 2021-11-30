@@ -1,11 +1,15 @@
 import java.awt.Color;
+
+import javax.imageio.ImageIO;
+
 import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
+import acm.graphics.GImage;
 import acm.graphics.GOval;
 
 
 public class PlayerShip {
-	public GRect playerShip;
+	public GImage playerShip;
 	public int x = 400, y = 400;
 	private GraphicsProgram screen;
 	private Bullets bullets;
@@ -30,9 +34,7 @@ public class PlayerShip {
 	
 	//Function creates playerShip and adds it to game screen
 	public void makePlayerShip() {
-		playerShip = new GRect(x, y, 50,50);
-		playerShip.setColor(new Color(102, 0, 153));
-		playerShip.setFilled(true);
+		playerShip = new GImage("assets/sprites/UNIT001.png");
 		screen.add(playerShip);
 	}
 	
