@@ -30,7 +30,7 @@ public class healthSystem {
 	}
 	
 	public static void main(String[] args) {
-		healthSystem somePlayerShip = new healthSystem(shipType.playerShip, 3, false);
+		healthSystem somePlayerShip = new healthSystem(shipType.PLAYERSHIP, 3, false);
 		System.out.println("This test is going to test playerShip subtracting health!");
 		somePlayerShip.subtractHealth();
 		System.out.println("Health: " + somePlayerShip.getHealth());
