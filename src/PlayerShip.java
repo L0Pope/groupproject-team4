@@ -34,7 +34,7 @@ public class PlayerShip {
 	
 	//Function creates playerShip and adds it to game screen
 	public void makePlayerShip() {
-		playerShip = new GImage("assets/sprites/UNIT001.png");
+		playerShip = new GImage("assets/sprites/UNIT001.png", x, y);
 		screen.add(playerShip);
 	}
 	

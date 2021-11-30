@@ -22,6 +22,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	public static final int WINDOW_HEIGHT = 600;
 	public static final int WINDOW_WIDTH = 800;
 	public static final int SIZE = 25;
+	private Timer timer;
 
 	//private static final int SPEED = 5;
 	
@@ -31,6 +32,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	
 	Game(MainApplication program){
 		this.program = program;
+		timer = new Timer(50, this);
 		//run();
 	}	
 	
@@ -45,6 +47,7 @@ public class Game extends GraphicsPane implements ActionListener{
 		moveBoss();
 		makePlayerShip();
 		//playerShip.addKeyListeners();
+		timer.start();
 	}
 	
 	//Function Adds Two Rows of Enemies to An arraylist
@@ -130,6 +133,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		playerShip.update();
 		
 	}
 }
