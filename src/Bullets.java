@@ -19,7 +19,7 @@ private ArrayList<Bullet>bullets;
 
 	
 	
-	public void addBullet(Bullet b, PlayerShip playerShip) {
+	public void addBullet(Bullet b) {
 		bullets.add(b);
 	//	b.add(playerShip);
 	}
