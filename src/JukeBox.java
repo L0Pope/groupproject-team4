@@ -28,7 +28,7 @@ public class JukeBox {
 	}
 	
 	public static void main (String [] args) {
-		File TestAudio = new File("TestAudio.wav");
+		File TestAudio = new File("assets/bgm/TestAudio.wav");
 		PLAY(TestAudio);
 	}
 	
