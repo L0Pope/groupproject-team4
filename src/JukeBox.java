@@ -24,6 +24,7 @@ public class JukeBox {
 	
 	static void STOP () {
 		Audio.stop();
+		Audio.close();
 	}
 	
 	public static void main (String [] args) {
