@@ -46,7 +46,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		bullets.update();
 		int rand = rgen.nextInt(100);
 		if(typeShip == shipType.BOSSSHIP) {
-			if(rand < 10) {
+			if(rand < 5) {
 				fireBullet();
 			}
 		}else if(typeShip == shipType.ENEMYSHIP) {
