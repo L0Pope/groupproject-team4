@@ -29,7 +29,7 @@ public class PlayerShip {
 	
 	
 	public void fireBullet(){
-		bullets.addBullet(new Bullet(x,y, -5, 1, screen), this);
+		bullets.addBullet(new Bullet(x,y, -5, 1, screen));
 	}
 	
 	//Function creates playerShip and adds it to game screen
