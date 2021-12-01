@@ -61,7 +61,7 @@ public class SettingPane extends GraphicsPane {
 		para4.setFont("Comic Sans MS-24");
 		escape = new GButton("Escape", 4, 549, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		//This just makes it so its easy to call later
-		ERROR = new GButton("This shouldnt have happen", 259, BUTTON_POS_Y, BUTTON_SIZE_X, BUTTON_SIZE_Y, Color.white);
+		ERROR = new GButton("Invalid key selection", 259, BUTTON_POS_Y, BUTTON_SIZE_X, BUTTON_SIZE_Y, Color.white);
 		ERROR.setFillColor(Color.black);
 		ERROR.setColor(Color.white);
 	}
@@ -190,7 +190,7 @@ public class SettingPane extends GraphicsPane {
 	public void keyPressed(KeyEvent e) {
 		//might want to set the values shown to be CAPS but just keep it constant.
 		if(UpRec) {
-			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
+			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != LeftLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != DownLoc)) {
 				Forward = e.getKeyChar();
 				ForwardLoc = e.getKeyCode();
 				//might need a location call
@@ -204,7 +204,7 @@ public class SettingPane extends GraphicsPane {
 		}
 		
 		if(LeftRec) {
-			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
+			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != DownLoc)) {
 				Left = e.getKeyChar();
 				LeftLoc = e.getKeyCode();
 				rect2.setText(String.valueOf(Left).toUpperCase());
@@ -217,7 +217,7 @@ public class SettingPane extends GraphicsPane {
 		}
 		
 		if(DownRec) {
-			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
+			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != LeftLoc)) {
 				Down = e.getKeyChar();
 				DownLoc = e.getKeyCode();
 				rect3.setText(String.valueOf(Down).toUpperCase());
@@ -230,7 +230,7 @@ public class SettingPane extends GraphicsPane {
 		}
 		
 		if(RightRec) {
-			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) {
+			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != DownLoc && e.getKeyCode() != LeftLoc)) {
 				Right = e.getKeyChar();
 				RightLoc = e.getKeyCode();
 				rect4.setText(String.valueOf(Right).toUpperCase());

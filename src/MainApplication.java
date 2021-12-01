@@ -16,6 +16,7 @@ public class MainApplication extends GraphicsProgram {
 	private SettingPane setting;
 	private HighScore HighScore;
 	private Game gameScreen;
+	private boolean game = true;
 	
 	/* Method: setupInteractions
 	 * -------------------------
@@ -118,22 +119,27 @@ public class MainApplication extends GraphicsProgram {
 
 	public void switchToSetting() {
 		switchToScreen(setting);
+		game = !game;
 	}
 	
 	public void switchToMenu() {
 		switchToScreen(menu);
+		game = !game;
 	}
 
 	public void switchToSome() {
 		switchToScreen(somePane);
+		game = !game;
 	}
 	
 	public void switchToPlay() {
 		switchToScreen(gameScreen);
+		game = true;
 	}
 	
 	public void switchToHighScore() {
 		switchToScreen(HighScore);
+		game = !game;
 
 	}
 	
@@ -179,5 +185,8 @@ public class MainApplication extends GraphicsProgram {
 		return setting.getRightLoc();
 	}
 	
+	public boolean getGame() {
+		return game;
+	}
 
 }

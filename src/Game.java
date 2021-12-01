@@ -72,6 +72,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	private void addBoss() {
 		bossShip = new enemyship(shipType.BOSSSHIP, 20, 50, program);
 	}
+	
 	private void moveBoss() {
 		bossShip.makeBoss();
 	}

@@ -30,6 +30,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	private int x, y;	
 	private GRect enemy;
 	private Bullets bullets;
+	private MainApplication program;
 	
 	//Each EnemyShip has its own coordinates, use x and y to locate it 
 	public enemyship(shipType typeShip, int x, int y, GraphicsProgram screen) { //location of the ship
@@ -43,6 +44,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	}	
 	
 	public void update() {
+		if(program.getGame()) {
 		bullets.update();
 		int rand = rgen.nextInt(100);
 		if(typeShip == shipType.BOSSSHIP) {
@@ -53,9 +55,15 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 			if(rand <3)
 				fireBullet();
 		}
+		}
+		else {
+			bullets.clearBullet();
+		}
 			
 //		removeBulletsOutOfBounds();
 	}
+	
+	
 	
 	public void fireBullet(){
 		bullets.addBullet(new Bullet(x,y, 5, 1, screen));
@@ -142,19 +150,17 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	}
 	
 	//Call this to Delete the Gobject
-	private void killEnemy() {
+	/*private void killEnemy() {
 		System.out.println("Dead!");
 		remove(enemy);
 	}
-	
+	*/
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	}
 	
 	public static void main(String args[]) {
 		//new enemyship(shipType.BOSSSHIP, 20,50).start();
-		
-		
 	}
 }
 //add kill enemy function
