@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
+
+import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 
@@ -10,6 +12,8 @@ public class SettingPane extends GraphicsPane {
 	// you will use program to get access to all of the GraphicsProgram calls
 	private MainApplication program;
 	//private AudioPlayer Audio;
+	
+	private GImage backround;
 	private GButton rect;
 	private GButton rect2;
 	private GButton rect3;
@@ -45,6 +49,7 @@ public class SettingPane extends GraphicsPane {
 	public SettingPane(MainApplication app) {
 		super();
 		program = app;
+		backround = new GImage("assets/sprites/animatedMenu.gif");
 		para0 = new GParagraph("HOW TO PLAY", 300, 50);
 		para0.setFont("Comic Sans MS-24");
 		rect = new GButton(Forward, 259, BUTTON_POS_Y, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
@@ -64,6 +69,12 @@ public class SettingPane extends GraphicsPane {
 		ERROR = new GButton("Invalid key selection", 259, BUTTON_POS_Y, BUTTON_SIZE_X, BUTTON_SIZE_Y, Color.white);
 		ERROR.setFillColor(Color.black);
 		ERROR.setColor(Color.white);
+		
+		para0.setColor(Color.white);
+		para.setColor(Color.white);
+		para2.setColor(Color.white);
+		para3.setColor(Color.white);
+		para4.setColor(Color.white);
 	}
 	
 	public char getForward() {
@@ -133,6 +144,7 @@ public class SettingPane extends GraphicsPane {
 	//if ascii(w) || ascii(i) ---> if x>
 	@Override
 	public void showContents() {
+		program.add(backround);
 		program.add(rect);
 		program.add(rect2);
 		program.add(rect3);

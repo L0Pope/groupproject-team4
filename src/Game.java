@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
+import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GOval;
@@ -19,7 +20,7 @@ import acm.util.RandomGenerator;
 public class Game extends GraphicsPane implements ActionListener{
 	
 	File Game = new File("assets/bgm/fight!.wav");
-	
+	private GImage backround;
 	private MainApplication program;
 	private SettingPane setting;
 	private ArrayList <enemyship> enemies = new ArrayList<enemyship>();
@@ -35,6 +36,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	PlayerShip playerShip;
 	
 	Game(MainApplication program){
+		backround = new GImage("assets/sprites/animatedMenu.gif");
 		this.program = program;
 		timer = new Timer(50, this);
 		//run();
@@ -45,10 +47,11 @@ public class Game extends GraphicsPane implements ActionListener{
 	}
 	
 	public void run() {
-		//addEnemies();
-		//moveEnemies();
-		addBoss();
-		moveBoss();
+		program.add(backround);
+		addEnemies();
+		moveEnemies();
+		//addBoss();
+		//moveBoss();
 		makePlayerShip();
 		//playerShip.addKeyListeners();
 		timer.start();
