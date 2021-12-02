@@ -17,7 +17,7 @@ public class JukeBox {
 			Audio.open(AudioSystem.getAudioInputStream(SelectedAudio));
 			Audio.start();
 			
-			Thread.sleep(Audio.getMicrosecondLength()/1000);
+			//Thread.sleep(Audio.getMicrosecondLength()/1000);
 		}
 		catch (Exception e) {}
 	}
@@ -25,6 +25,7 @@ public class JukeBox {
 	static void STOP () {
 		Audio.stop();
 		Audio.close();
+		Audio.drain();
 	}
 	
 	public static void main (String [] args) {

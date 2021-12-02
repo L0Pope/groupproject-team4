@@ -182,6 +182,7 @@ public class SettingPane extends GraphicsPane {
 			program.remove(ERROR);
 		}
 		if(obj == escape) {
+			JukeBox.STOP();
 			program.switchToMenu();
 		}
 	}

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.Timer;
@@ -16,6 +17,9 @@ import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
 
 public class Game extends GraphicsPane implements ActionListener{
+	
+	File Game = new File("assets/bgm/fight!.wav");
+	
 	private MainApplication program;
 	private SettingPane setting;
 	private ArrayList <enemyship> enemies = new ArrayList<enemyship>();
@@ -117,10 +121,11 @@ public class Game extends GraphicsPane implements ActionListener{
 			playerShip.move(3);
 		} else if (key == right) {
 			playerShip.move(4);
-		} else if (key == e.VK_SPACE) {
+		} else if (key == KeyEvent.VK_SPACE) {
 			playerShip.move(5);
 		}
-		if(key == e.VK_ESCAPE) {
+		if(key == KeyEvent.VK_ESCAPE) {
+			JukeBox.STOP();
 			program.switchToMenu();
 		}
 	}

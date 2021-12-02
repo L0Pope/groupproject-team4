@@ -1,8 +1,14 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.File;
+
 import acm.program.GraphicsProgram;
 
 public class MainApplication extends GraphicsProgram {
+	
+	File menuBGM = new File ("assets/bgm/Menu.wav");
+	File test = new File ("assets/bgm/TestAudio.wav");
+	File Game = new File("assets/bgm/fight!.wav");
 	
 	//public static final int WINDOW_WIDTH = 1920;
 	public static final int WINDOW_WIDTH = 800;
@@ -113,18 +119,23 @@ public class MainApplication extends GraphicsProgram {
 		gameScreen = new Game(this);
 		setupInteractions();
 		switchToMenu();
+		//JukeBox.PLAY(menuBGM);
 		//switchToHighScore();
 		//switchToSetting();
 	}
 
 	public void switchToSetting() {
+		JukeBox.STOP();
 		switchToScreen(setting);
 		game = !game;
+		JukeBox.PLAY(test);
 	}
 	
 	public void switchToMenu() {
 		switchToScreen(menu);
 		game = !game;
+		JukeBox.PLAY(menuBGM);
+		
 	}
 
 	public void switchToSome() {
@@ -133,14 +144,15 @@ public class MainApplication extends GraphicsProgram {
 	}
 	
 	public void switchToPlay() {
+		JukeBox.STOP();
 		switchToScreen(gameScreen);
 		game = true;
+		JukeBox.PLAY(Game);
 	}
 	
 	public void switchToHighScore() {
 		switchToScreen(HighScore);
 		game = !game;
-
 	}
 	
 	/*

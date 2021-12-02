@@ -44,7 +44,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	}	
 	
 	public void update() {
-		if(program.getGame()) {
+
 		bullets.update();
 		int rand = rgen.nextInt(100);
 		if(typeShip == shipType.BOSSSHIP) {
@@ -56,12 +56,8 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 				fireBullet();
 		}
 		}
-		else {
-			bullets.clearBullet();
-		}
 			
 //		removeBulletsOutOfBounds();
-	}
 	
 	
 	
