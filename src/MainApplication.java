@@ -151,6 +151,7 @@ public class MainApplication extends GraphicsProgram {
 	}
 	
 	public void switchToHighScore() {
+		JukeBox.STOP();
 		switchToScreen(HighScore);
 		game = !game;
 	}
