@@ -20,6 +20,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	private RandomGenerator rgen;
 	private GraphicsProgram screen;
 	private shipType typeShip;
+	private healthSystem bossHealth;
 	
 	public static final int SIZE = 25;
 	public static final int SPEED = 2;
@@ -93,6 +94,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 		//enemy.setColor(new Color(0,255,0));
 		//enemy.setFilled(true);
 		//add(enemy);
+		bossHealth = new healthSystem(shipType.BOSSSHIP, 3, false);
 		screen.add(enemy); // enable this for game.java
 		movement = new Timer(MS, this);
 		movement.start();
