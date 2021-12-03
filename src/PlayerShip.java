@@ -13,7 +13,7 @@ public class PlayerShip {
 	public int x = 400, y = 400;
 	private GraphicsProgram screen;
 	private Bullets bullets;
-	private final static int SPEED = 5;
+	private final static int SPEED = 10;
 
 	//Function adds game screen to PlayerShip class
 	public PlayerShip(GraphicsProgram screen) {

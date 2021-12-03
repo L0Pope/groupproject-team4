@@ -64,12 +64,12 @@ public class Game extends GraphicsPane implements ActionListener{
 	//Function Adds Two Rows of Enemies to An arraylist
 	private void addEnemies() {
 		
-		for(int i = SIZE; i < 800/*WINDOW_WIDTH-SIZE/2*/; i += 50) {
+		for(int i = SIZE; i < 750/*WINDOW_WIDTH-SIZE/2*/; i += 50) {
 			enemyShip = new enemyship(shipType.ENEMYSHIP, i, 25, program);
 			enemies.add(enemyShip);
 		}
 		
-		for(int i = SIZE+150; i < 650; i+=50) {
+		for(int i = SIZE+100; i < 650; i+=50) {
 			enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, program);
 			enemies.add(enemyShip);
 		}
