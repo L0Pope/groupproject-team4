@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import acm.graphics.*;
 import acm.graphics.GImage;
 import acm.graphics.GOval;
@@ -5,6 +7,8 @@ import acm.program.GraphicsProgram;
 
 public class Bullet extends Entity{
 	private GraphicsProgram screen;
+	private static final int WIDTH = 25;
+	private static final int HEIGHT = 25;
 	private static final int SIZE = 5;
 	double dy; //velocity
 	int damage;
@@ -21,7 +25,8 @@ public class Bullet extends Entity{
 		this.screen = screen;
 		
 		
-		tempSprite = new GOval(x,y,50,50);
+		tempSprite = new GOval(x,y,WIDTH,HEIGHT);
+		tempSprite.setColor(Color.white);
 		screen.add(tempSprite);
 
 	}
@@ -55,8 +60,14 @@ public class Bullet extends Entity{
 	public double getY() {
 		return y;
 	}
-
 	
+	public int getWidth() {
+		return WIDTH;
+	}
+	
+	public int getHeight() {
+		return HEIGHT;
+	}
 
 	//public String toString() {
 	//	String s = new String();

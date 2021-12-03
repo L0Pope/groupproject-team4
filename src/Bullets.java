@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Bullets {
-private ArrayList<Bullet>bullets;
+public ArrayList<Bullet>bullets;
 	
 
 	public Bullets() {
