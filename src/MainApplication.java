@@ -154,6 +154,7 @@ public class MainApplication extends GraphicsProgram {
 		JukeBox.STOP();
 		switchToScreen(HighScore);
 		game = !game;
+		JukeBox.PLAY(test);
 	}
 	
 	/*

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
+import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GOval;
@@ -28,7 +29,8 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	private int numTimes = -1;
 	public Boolean right = true;
 	private int x, y;	
-	private GRect enemy;
+	//private GRect enemy;
+	private GImage enemy;
 	private Bullets bullets;
 	private MainApplication program;
 	
@@ -75,18 +77,21 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	
 	//Makes Single Grect that also has a timer associated with it
 	public void makeEnemy() {
-		enemy = new GRect(x-SIZE/2, y, SIZE, SIZE);
-		enemy.setColor(new Color(0,255, 0));
-		enemy.setFilled(true);
+		enemy = new GImage("assets/sprites/badguy.gif", x, y);
+		//enemy = new GRect(x-SIZE/2, y, SIZE, SIZE);
+		//enemy.setColor(new Color(0,255, 0));
+		//enemy.setFilled(true);
 		screen.add(enemy);
 		movement = new Timer(MS, this);
 		movement.start();
 	}
 	
 	public void makeBoss() {
-		enemy = new GRect(x-SIZE/2, y, SIZE*4, SIZE*4);
-		enemy.setColor(new Color(0,255,0));
-		enemy.setFilled(true);
+		//This is just a temp for the boss
+		enemy = new GImage("assets/sprites/badguy.gif");
+		//enemy = new GRect(x-SIZE/2, y, SIZE*4, SIZE*4);
+		//enemy.setColor(new Color(0,255,0));
+		//enemy.setFilled(true);
 		//add(enemy);
 		screen.add(enemy); // enable this for game.java
 		movement = new Timer(MS, this);
