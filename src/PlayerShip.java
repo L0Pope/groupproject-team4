@@ -14,6 +14,8 @@ public class PlayerShip {
 	private GraphicsProgram screen;
 	private Bullets bullets;
 	private final static int SPEED = 10;
+	private boolean friendlyBullet = true;
+
 
 	//Function adds game screen to PlayerShip class
 	public PlayerShip(GraphicsProgram screen) {
@@ -29,7 +31,7 @@ public class PlayerShip {
 	
 	
 	public void fireBullet(){
-		bullets.addBullet(new Bullet(x,y, -5, 1, screen));
+		bullets.addBullet(new Bullet(x,y, -5, 1, friendlyBullet, screen));
 	}
 	
 	//Function creates playerShip and adds it to game screen

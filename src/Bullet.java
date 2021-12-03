@@ -10,23 +10,30 @@ public class Bullet extends Entity{
 	private static final int WIDTH = 25;
 	private static final int HEIGHT = 25;
 	private static final int SIZE = 5;
+	private boolean friendlyBullet;
 	double dy; //velocity
 	int damage;
 	GImage sprite;
 	GOval tempSprite;
 
 
-	public Bullet(double x, double y, double dy, int damage, GraphicsProgram screen){
+	public Bullet(double x, double y, double dy, int damage, boolean friendlyBullet, GraphicsProgram screen){
 		this.x = x;
 		this.y = y;
 		this.dy = dy;
 		this.damage = damage;
 		isdead = false;
+		this.friendlyBullet = friendlyBullet;
 		this.screen = screen;
 		
 		
 		tempSprite = new GOval(x,y,WIDTH,HEIGHT);
-		tempSprite.setColor(Color.white);
+		if(friendlyBullet) {
+			tempSprite.setColor(Color.white);
+		}
+		else {
+			tempSprite.setColor(Color.red);
+		}
 		screen.add(tempSprite);
 
 	}

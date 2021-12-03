@@ -34,6 +34,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	private GImage enemy;
 	private Bullets bullets;
 	private MainApplication program;
+	private boolean friendlyBullet = false;
 	
 	//Each EnemyShip has its own coordinates, use x and y to locate it 
 	public enemyship(shipType typeShip, int x, int y, GraphicsProgram screen) { //location of the ship
@@ -65,7 +66,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	
 	
 	public void fireBullet(){
-		bullets.addBullet(new Bullet(x,y, 5, 1, screen));
+		bullets.addBullet(new Bullet(x,y, 5, 1, friendlyBullet, screen));
 	}
 	
 	public void run() {

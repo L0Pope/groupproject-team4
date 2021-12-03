@@ -40,4 +40,11 @@ public class Hitbox extends GraphicsProgram{
 			}	
 	}
 	
+	//public void collision() {
+		
+		
+	//}
+	
+	//}
+	
 }
