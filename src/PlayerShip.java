@@ -25,7 +25,7 @@ public class PlayerShip {
 	
 	
 	public void update() {
-		bullets.update();
+		updatePlayerBullet();
 //		removeBulletsOutOfBounds();
 	}
 	
@@ -33,7 +33,11 @@ public class PlayerShip {
 	public void fireBullet(){
 		bullets.addBullet(new Bullet(x,y, -5, 1, friendlyBullet, screen));
 	}
-	
+	private void updatePlayerBullet() {
+		for(Bullet b: bullets.bullets) {
+			b.update();
+		}
+	}
 	//Function creates playerShip and adds it to game screen
 	public void makePlayerShip() {
 		playerShip = new GImage("assets/sprites/UNIT002.gif", x, y);
