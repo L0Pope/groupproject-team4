@@ -27,7 +27,6 @@ public class Bullet extends Entity{
 		this.friendlyBullet = friendlyBullet;
 		this.screen = screen;
 		
-		
 		tempSprite = new GOval(x,y,WIDTH,HEIGHT);
 		if(friendlyBullet) {
 			tempSprite.setColor(Color.white);
@@ -45,14 +44,19 @@ public class Bullet extends Entity{
 		return this.y;
 	}
 	
-
+	public void setXY(int x, int y) {
+		this.x = x;
+		this.y = y;
+		screen.remove(tempSprite);
+	}
 	
 //	public void add(PlayerShip playerShip) {
 //		playerShip.add(tempSprite);
 //	}
 	
 	public void removeBullet() {
-		screen.remove(tempSprite);
+		//screen.remove(tempSprite);
+		tempSprite.setLocation(0, 0);
 	}
 	
 		
