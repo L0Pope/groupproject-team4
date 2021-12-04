@@ -28,6 +28,7 @@ public class Game extends GraphicsPane implements ActionListener{
     public static final int WINDOW_WIDTH = 800;
     public static final int SIZE = 25;
     private Timer timer;
+    private int count = 20;
 
     //private static final int SPEED = 5;
     
@@ -159,7 +160,10 @@ public class Game extends GraphicsPane implements ActionListener{
         } else if (key == right) {
             playerShip.move(4);
         } else if (key == KeyEvent.VK_SPACE) {
+        	if(count > 4) {
             playerShip.move(5);
+            count = 0;
+        	}
         }
         if(key == KeyEvent.VK_ESCAPE) {
             JukeBox.STOP();
@@ -178,6 +182,7 @@ public class Game extends GraphicsPane implements ActionListener{
         // TODO Auto-generated method stub
         //playerShip.update();
         updateAllBullets();
+        count++;
         //hitbox.checkCollision();
         // update all enemies once here
         
