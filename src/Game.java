@@ -72,6 +72,7 @@ public class Game extends GraphicsPane implements ActionListener{
                             System.out.println("HIT!");
                             b.setXY(20000,20000);
                             playerShip.playerShipHealth.subtractHealth();
+                            playerShip.removeHeart();
                             System.out.println(playerShip.playerShipHealth.getHealth());
                             if(playerShip.playerShipHealth.isDestroyed() == true) {
                             	System.out.println("Player is Dead"); //CALL GAME OVER

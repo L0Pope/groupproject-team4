@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -11,7 +12,6 @@ import acm.graphics.GOval;
 public class PlayerShip {
 	public GImage playerShip;
 	public healthSystem playerShipHealth;
-	//public GRect playerShip2;
 	public int x = 400, y = 400;
 	private GraphicsProgram screen;
 	private Bullets bullets;
@@ -19,6 +19,7 @@ public class PlayerShip {
 	private final static int WIDTH = 50;
 	private final static int HEIGHT = 50;
 	private boolean friendlyBullet = true;
+	private ArrayList<GRect> hearts = new ArrayList<GRect>(3);
 
 
 	//Function adds game screen to PlayerShip class
@@ -46,12 +47,21 @@ public class PlayerShip {
 	//Function creates playerShip and adds it to game screen
 	public void makePlayerShip() {
 		playerShip = new GImage("assets/sprites/UNIT002.gif", x, y);
-		//playerShip2 = new GRect(x+10,y+10, WIDTH, HEIGHT);
-		//playerShip2.setColor(Color.YELLOW);
-		//Used for testing hitbox
 		screen.add(playerShip);
-		//screen.add(playerShip2);
+		for(int i = 0; i < 3; i++) {
+			int multipler = i*30;
+			hearts.add(new GRect(770, 500+multipler, 25, 25));
+			hearts.get(i).setColor(Color.MAGENTA);
+			screen.add(hearts.get(i));
+			System.out.println(i);
+		}
 	}
+	
+	public void removeHeart() {
+		screen.remove(hearts.get(0));
+		hearts.remove(0);
+	}
+	
 	public int getPlayerX() {
 		return this.x;
 	}
@@ -70,22 +80,18 @@ public class PlayerShip {
 		if (key == 1) {
 			y -= SPEED;
 			playerShip.move(0, -SPEED);
-			//playerShip2.move(0, -SPEED);
 
 		} else if (key == 2) {
 			x -= SPEED;
 			playerShip.move(-SPEED, 0);
-			//playerShip2.move(-SPEED,0);
 
 		} else if (key == 3) {
 			y += SPEED;
 			playerShip.move(0, SPEED);
-			//playerShip2.move(0, SPEED);
 
 		} else if (key == 4){
 			x += SPEED;
 			playerShip.move(SPEED, 0);
-			//playerShip2.move(SPEED, 0);
 			
 		} else if (key == 5) {
 			fireBullet();
