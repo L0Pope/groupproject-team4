@@ -39,6 +39,12 @@ public class PlayerShip {
 		playerShip = new GImage("assets/sprites/UNIT002.gif", x, y);
 		screen.add(playerShip);
 	}
+	public int returnPlayerX() {
+		return this.x;
+	}
+	public int returnPlayerY() {
+		return this.y;
+	}
 	
 	//Function controls playerShip image movement
 	public void move(int key) {

@@ -34,14 +34,14 @@ public class Game extends GraphicsPane implements ActionListener{
 	enemyship enemyShip;
 	enemyship bossShip;
 	PlayerShip playerShip;
-	Hitbox hitbox;
+	//Hitbox hitbox;
 	
 	Game(MainApplication program){
 		backround = new GImage("assets/sprites/animatedMenu.gif");
 		this.program = program;
-		hitbox = new Hitbox();
+		//hitbox = new Hitbox();
 		timer = new Timer(50, this);
-		hitbox.run();
+		//hitbox.run();
 		//run();
 	}	
 	
@@ -58,9 +58,17 @@ public class Game extends GraphicsPane implements ActionListener{
 		makePlayerShip();
 		//playerShip.addKeyListeners();
 		timer.start();
+		checkCollision(playerShip);
 		
 	}
 	
+	private void checkCollision(PlayerShip playerShip) {
+		//for(enemyship e:enemies) {
+		//	for(int i = 0; i < e.bullets.bullets.size(); i++)  {
+		//		if(getElementAt( e.bullets.bullets[i] = )
+		//	}
+		//}
+	}
 	//Function Adds Two Rows of Enemies to An arraylist
 	private void addEnemies() {
 		
@@ -147,7 +155,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		playerShip.update();
-		hitbox.checkCollision();
+		//hitbox.checkCollision();
 		// update all enemies once here
 		
 	}

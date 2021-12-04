@@ -20,8 +20,8 @@ public class Hitbox extends GraphicsProgram{
 	}
 	
 	public void run() {
-		movement = new Timer(50, this);
-		movement.start();
+		//movement = new Timer(50, this);
+		//movement.start();
 	}
 	
 	public void actionPerformed(ActionEvent e) {

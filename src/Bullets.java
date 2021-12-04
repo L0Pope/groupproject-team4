@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import acm.graphics.GImage;
+
 public class Bullets {
 public ArrayList<Bullet>bullets;
 	
@@ -13,9 +15,13 @@ public ArrayList<Bullet>bullets;
 		
 		for(Bullet b : bullets) {
 			b.update();
+			//if(b.getY() ==   ) {
+			//	remove
+			//}
 		}
 		bullets.removeIf(b ->(b.isdead()));
 	}
+	
 
 	
 	

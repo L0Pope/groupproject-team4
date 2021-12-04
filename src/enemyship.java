@@ -32,7 +32,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	private int x, y;	
 	//private GRect enemy;
 	private GImage enemy;
-	private Bullets bullets;
+	public Bullets bullets;
 	private MainApplication program;
 	private boolean friendlyBullet = false;
 	
@@ -49,7 +49,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	
 	public void update() {
 
-		bullets.update();
+		updateBullet();
 		int rand = rgen.nextInt(1000);
 		if(typeShip == shipType.BOSSSHIP) {
 			if(rand < 5) {
@@ -60,7 +60,11 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 				fireBullet();
 		}
 		}
-			
+	public void updateBullet() {
+		for(Bullet b : bullets.bullets) {
+			b.update();
+		}
+	}
 //		removeBulletsOutOfBounds();
 	
 	

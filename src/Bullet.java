@@ -15,9 +15,10 @@ public class Bullet extends Entity{
 	int damage;
 	GImage sprite;
 	GOval tempSprite;
+	int x; //bullet x coordinate
+	int y; //bullet y coordinate
 
-
-	public Bullet(double x, double y, double dy, int damage, boolean friendlyBullet, GraphicsProgram screen){
+	public Bullet(int x, int y, double dy, int damage, boolean friendlyBullet, GraphicsProgram screen){
 		this.x = x;
 		this.y = y;
 		this.dy = dy;
@@ -36,6 +37,12 @@ public class Bullet extends Entity{
 		}
 		screen.add(tempSprite);
 
+	}
+	public int returnBulletX() {
+		return this.x;
+	}
+	public int returnBulletY() {
+		return this.y;
 	}
 	
 
