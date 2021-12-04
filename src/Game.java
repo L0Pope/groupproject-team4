@@ -75,6 +75,7 @@ public class Game extends GraphicsPane implements ActionListener{
                         //System.out.println("test");
                     }        
             }
+            playerShip.update();
             //System.out.println("test");
 
     }
@@ -168,7 +169,7 @@ public class Game extends GraphicsPane implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        playerShip.update();
+        //playerShip.update();
         updateAllBullets();
         //hitbox.checkCollision();
         // update all enemies once here
