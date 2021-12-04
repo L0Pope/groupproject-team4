@@ -69,6 +69,7 @@ public class Game extends GraphicsPane implements ActionListener{
                         if( ((playerShip.getPlayerX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < playerShip.getPlayerX() + playerShip.getPlayerWidth()))	
                         && ((playerShip.getPlayerY() < b.returnBulletY()+20) && (b.returnBulletY() < playerShip.getPlayerY()+20 + playerShip.getPlayerHeight()))) {
                             System.out.println("HIT!");
+                            b.setXY(20000,20000);
                             playerShip.playerShipHealth.subtractHealth();
                             System.out.println(playerShip.playerShipHealth.getHealth());
                             if(playerShip.playerShipHealth.isDestroyed() == true) {
@@ -119,9 +120,10 @@ public class Game extends GraphicsPane implements ActionListener{
     
     @Override
     public void hideContents() {
-    	for(int i = 0; i<enemies.size(); i++) {
-			enemies.get(i).finalize();
-		}
+    	  for(int i = 0; i < enemies.size(); i++) {
+              enemies.get(i).finalize();
+
+          }
         program.removeAll();
     }
     
