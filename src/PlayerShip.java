@@ -10,10 +10,13 @@ import acm.graphics.GOval;
 
 public class PlayerShip {
 	public GImage playerShip;
+	//public GRect playerShip2;
 	public int x = 400, y = 400;
 	private GraphicsProgram screen;
 	private Bullets bullets;
 	private final static int SPEED = 10;
+	private final static int WIDTH = 50;
+	private final static int HEIGHT = 50;
 	private boolean friendlyBullet = true;
 
 
@@ -41,13 +44,23 @@ public class PlayerShip {
 	//Function creates playerShip and adds it to game screen
 	public void makePlayerShip() {
 		playerShip = new GImage("assets/sprites/UNIT002.gif", x, y);
+		//playerShip2 = new GRect(x+10,y+10, WIDTH, HEIGHT);
+		//playerShip2.setColor(Color.YELLOW);
+		//Used for testing hitbox
 		screen.add(playerShip);
+		//screen.add(playerShip2);
 	}
-	public int returnPlayerX() {
+	public int getPlayerX() {
 		return this.x;
 	}
-	public int returnPlayerY() {
+	public int getPlayerY() {
 		return this.y;
+	}
+	public int getPlayerWidth() {
+		return WIDTH;
+	}
+	public int getPlayerHeight() {
+		return HEIGHT;
 	}
 	
 	//Function controls playerShip image movement
@@ -55,18 +68,22 @@ public class PlayerShip {
 		if (key == 1) {
 			y -= SPEED;
 			playerShip.move(0, -SPEED);
-			
+			//playerShip2.move(0, -SPEED);
+
 		} else if (key == 2) {
 			x -= SPEED;
 			playerShip.move(-SPEED, 0);
-			
+			//playerShip2.move(-SPEED,0);
+
 		} else if (key == 3) {
 			y += SPEED;
 			playerShip.move(0, SPEED);
-			
+			//playerShip2.move(0, SPEED);
+
 		} else if (key == 4){
 			x += SPEED;
 			playerShip.move(SPEED, 0);
+			//playerShip2.move(SPEED, 0);
 			
 		} else if (key == 5) {
 			fireBullet();

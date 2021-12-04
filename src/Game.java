@@ -66,11 +66,12 @@ public class Game extends GraphicsPane implements ActionListener{
             for(enemyship e : enemies) {
                     for(Bullet b : e.bullets.bullets) {
                         b.update();
-                        if(b.returnBulletX() < playerShip.returnPlayerX()) {
+                        if( ((playerShip.getPlayerX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < playerShip.getPlayerX() + playerShip.getPlayerWidth()))	
+                        && ((playerShip.getPlayerY() < b.returnBulletY()+20) && (b.returnBulletY() < playerShip.getPlayerY()+20 + playerShip.getPlayerHeight()))) {
                             System.out.println("HIT!");
                         }
-                        System.out.println(b.returnBulletX());
-                        System.out.println(playerShip.returnPlayerX());
+                        //System.out.println(b.returnBulletX());
+                        //System.out.println(playerShip.returnPlayerX());
                         //System.out.println("test");
                     }        
             }
