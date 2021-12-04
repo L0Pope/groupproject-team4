@@ -11,7 +11,7 @@ public ArrayList<Bullet>bullets;
 	}
 	
 		
-	public void update(){
+	/*public void update(){
 		
 		for(Bullet b : bullets) {
 			b.update();
@@ -20,7 +20,7 @@ public ArrayList<Bullet>bullets;
 			//}
 		}
 		bullets.removeIf(b ->(b.isdead()));
-	}
+	}*/
 	
 
 	
