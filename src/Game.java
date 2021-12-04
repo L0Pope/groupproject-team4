@@ -104,6 +104,9 @@ public class Game extends GraphicsPane implements ActionListener{
 	
 	@Override
 	public void hideContents() {
+		for(int i = 0; i<enemies.size(); i++) {
+			enemies.get(i).finalize();
+		}
 		program.removeAll();
 	}
 	

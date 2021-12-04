@@ -67,6 +67,10 @@ public class enemyship extends GraphicsProgram implements ActionListener{
 	}
 //		removeBulletsOutOfBounds();
 	
+	protected void finalize() {
+		movement.stop();
+		bullets.clearBullet();
+	}
 	
 	
 	public void fireBullet(){
