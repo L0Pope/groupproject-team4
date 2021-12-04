@@ -69,6 +69,11 @@ public class Game extends GraphicsPane implements ActionListener{
                         if( ((playerShip.getPlayerX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < playerShip.getPlayerX() + playerShip.getPlayerWidth()))	
                         && ((playerShip.getPlayerY() < b.returnBulletY()+20) && (b.returnBulletY() < playerShip.getPlayerY()+20 + playerShip.getPlayerHeight()))) {
                             System.out.println("HIT!");
+                            playerShip.playerShipHealth.subtractHealth();
+                            System.out.println(playerShip.playerShipHealth.getHealth());
+                            if(playerShip.playerShipHealth.isDestroyed() == true) {
+                            	System.out.println("Player is Dead"); //CALL GAME OVER
+                            }
                         }
                         //System.out.println(b.returnBulletX());
                         //System.out.println(playerShip.returnPlayerX());

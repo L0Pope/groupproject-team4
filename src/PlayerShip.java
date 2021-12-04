@@ -10,6 +10,7 @@ import acm.graphics.GOval;
 
 public class PlayerShip {
 	public GImage playerShip;
+	public healthSystem playerShipHealth;
 	//public GRect playerShip2;
 	public int x = 400, y = 400;
 	private GraphicsProgram screen;
@@ -22,6 +23,7 @@ public class PlayerShip {
 
 	//Function adds game screen to PlayerShip class
 	public PlayerShip(GraphicsProgram screen) {
+		playerShipHealth = new healthSystem(shipType.PLAYERSHIP, 3, false);
 		this.screen = screen;
 		bullets = new Bullets();
 	}
