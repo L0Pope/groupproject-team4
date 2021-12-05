@@ -20,7 +20,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     private RandomGenerator rgen;
     private GraphicsProgram screen;
     public shipType typeShip;
-    private healthSystem bossHealth;
+    public healthSystem bossHealth;
     
     public static final int SIZE = 25;
     public static final int SPEED = 2;
@@ -103,7 +103,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     public void makeBoss() {
         //This is just a temp for the boss
         enemy = new GImage("assets/sprites/badguy.gif");
-        bossHealth = new healthSystem(shipType.BOSSSHIP, 3, false);
+        bossHealth = new healthSystem(shipType.BOSSSHIP, 20, false);
         screen.add(enemy); // enable this for game.java
     }
     

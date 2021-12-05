@@ -74,6 +74,7 @@ public class Game extends GraphicsPane implements ActionListener{
     }
     
     private void updateAllBullets() {
+    	if(!bossSpawned) {
             for(enemyship e : enemies) {
                     for(Bullet b : e.bullets.bullets) {
                         b.update();
@@ -87,15 +88,10 @@ public class Game extends GraphicsPane implements ActionListener{
                             if(playerShip.playerShipHealth.isDestroyed() == true) {
                             	System.out.println("Player is Dead"); //CALL GAME OVER
                             }
-                        }
-                        //System.out.println(b.returnBulletX());
-                        //System.out.println(playerShip.returnPlayerX());
-                        //System.out.println("test");
-                    }        
+                        }        
+                    }
             }
             
-           // for(enemyship e : enemies) {
-
         	for(Bullet b : playerShip.bullets.bullets) {
         		for(int i = 0; i < enemies.size(); i++) {
             		if( ((enemies.get(i).getEnemyX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < enemies.get(i).getEnemyX() + playerShip.getPlayerWidth()))	
@@ -105,19 +101,41 @@ public class Game extends GraphicsPane implements ActionListener{
             	         enemies.get(i).killEnemy(program);
             	         enemies.get(i).bullets.clearBullet();
             	         playerShip.playerScore.calculateKilledEnemy(playerShip.playerScore.getScore(), playerShip.playerShipHealth.getHealth());
-
-            	         //enemies.get(i).bullets.bullets.remove(enemies.get(i).bullets.bullets);
             	         enemies.remove(enemies.get(i));
-            	         //program.remove(e.enemy);
-            	         //enemies.remove(e);
-            	         //enemies.remove(e);
             	         }
             		 }
             	}
-            	playerShip.update();
-            	//System.out.println("test");
-            	}
-
+            	//playerShip.update();
+    	} else {
+                for(Bullet b : bossShip.bullets.bullets) {
+                    b.update();
+                    if( ((playerShip.getPlayerX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < playerShip.getPlayerX() + playerShip.getPlayerWidth()))	
+                    && ((playerShip.getPlayerY() < b.returnBulletY()+20) && (b.returnBulletY() < playerShip.getPlayerY()+20 + playerShip.getPlayerHeight()))) {
+                        System.out.println("HIT!");
+                        b.setXY(20000,20000);
+                        playerShip.playerShipHealth.subtractHealth();
+                        playerShip.removeHeart();
+                        System.out.println(playerShip.playerShipHealth.getHealth());
+                        if(playerShip.playerShipHealth.isDestroyed() == true) {
+                        	System.out.println("Player is Dead"); //CALL GAME OVER
+                        }
+                    }        
+                }
+        
+                for(Bullet b : playerShip.bullets.bullets) {
+                	if( ((bossShip.getEnemyX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < bossShip.getEnemyX() + playerShip.getPlayerWidth()))	
+                	&& ((bossShip.getEnemyY() < b.returnBulletY()+20) && (b.returnBulletY() < bossShip.getEnemyY()+20 + playerShip.getPlayerHeight()))) {
+                		System.out.println("HIT!");
+                		b.setXY(20000,20000);
+                		bossShip.bossHealth.subtractHealth();
+                		System.out.println(bossShip.bossHealth.getHealth());
+                		if(bossShip.bossHealth.isDestroyed() == true) {
+                        	System.out.println("Boss is Dead"); //CALL GAME OVER
+                        }
+                	}
+                }
+    	}
+    }
     
     //Function Adds Two Rows of Enemies to An arraylist
     private void addEnemies() {
