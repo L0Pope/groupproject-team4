@@ -6,12 +6,14 @@ import javax.imageio.ImageIO;
 import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 import acm.graphics.GImage;
+import acm.graphics.GLabel;
 import acm.graphics.GOval;
 
 
 public class PlayerShip {
 	public GImage playerShip;
 	public healthSystem playerShipHealth;
+	public scoreSystem playerScore;
 	public int x = 400, y = 400;
 	private GraphicsProgram screen;
 	public Bullets bullets;
@@ -20,6 +22,7 @@ public class PlayerShip {
 	private final static int HEIGHT = 50;
 	private boolean friendlyBullet = true;
 	private ArrayList<GRect> hearts = new ArrayList<GRect>(3);
+	private GLabel score = new GLabel ("Score: ", 10, 590);
 
 
 	//Function adds game screen to PlayerShip class
@@ -53,11 +56,17 @@ public class PlayerShip {
 			hearts.add(new GRect(770, 500+multipler, 25, 25));
 			hearts.get(i).setColor(Color.MAGENTA);
 			screen.add(hearts.get(i));
+			
+			playerScore = new scoreSystem(0, 3, 0);
+			score.setLabel("Score: " + playerScore.getScore());
+			score.setColor(Color.WHITE);
+			screen.add(score);
 			System.out.println(i);
 		}
 	}
 	
 	public void removeHeart() {
+		score.setLabel("Score: 1");
 		screen.remove(hearts.get(0));
 		hearts.remove(0);
 	}
