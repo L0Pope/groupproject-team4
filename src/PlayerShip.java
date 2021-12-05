@@ -35,6 +35,7 @@ public class PlayerShip {
 	
 	public void update() {
 		updatePlayerBullet();
+		updatePlayerScore();
 //		removeBulletsOutOfBounds();
 	}
 	
@@ -46,6 +47,10 @@ public class PlayerShip {
 		for(Bullet b: bullets.bullets) {
 			b.update();
 		}
+	}
+	private void updatePlayerScore() {
+	        score.setLabel("Score: " + playerScore.getScore());
+	 
 	}
 	//Function creates playerShip and adds it to game screen
 	public void makePlayerShip() {

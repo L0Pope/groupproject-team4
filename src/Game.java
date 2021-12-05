@@ -104,7 +104,8 @@ public class Game extends GraphicsPane implements ActionListener{
             	         b.setXY(20000,20000);
             	         enemies.get(i).killEnemy(program);
             	         enemies.get(i).bullets.clearBullet();
-            	         
+            	         playerShip.playerScore.calculateKilledEnemy(playerShip.playerScore.getScore(), playerShip.playerShipHealth.getHealth());
+
             	         //enemies.get(i).bullets.bullets.remove(enemies.get(i).bullets.bullets);
             	         enemies.remove(enemies.get(i));
             	         //program.remove(e.enemy);
@@ -146,10 +147,12 @@ public class Game extends GraphicsPane implements ActionListener{
     }
     private void addBoss() {
         bossShip = new enemyship(shipType.BOSSSHIP, 20, 50, program);
+        bossShip.makeBoss();
     }
     
     private void moveBoss() {
-        bossShip.makeBoss();
+    	enemyShip.numTimes++;
+        bossShip.moveEnemy();
     }
     
 
@@ -247,10 +250,15 @@ public class Game extends GraphicsPane implements ActionListener{
         // TODO Auto-generated method stub
         playerShip.update();
         updateAllBullets();
-        moveEnemies();
         count++;
-        for(enemyship enemy : enemies) {
-        	enemy.update();
+        if(!bossSpawned) {
+        	moveEnemies();
+        	for(enemyship enemy : enemies) {
+        		enemy.update();
+        	}
+        } else {
+        	moveBoss();
+        	bossShip.update();
         }
         checkEnemiesDead();
         //if(moveSpawnedBoss) moveBoss();
