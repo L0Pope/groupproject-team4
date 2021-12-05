@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import acm.graphics.GImage;
+import acm.program.GraphicsProgram;
 
 public class Bullets {
 public ArrayList<Bullet>bullets;
@@ -30,9 +31,15 @@ public ArrayList<Bullet>bullets;
 	//	b.add(playerShip);
 	}
 	
+	/*public void removeBullets(GraphicsProgram screen) {
+		screen.remove(bullets);
+	}*/
 	
 	//clearBullets will clear the entire bullet list
 	public void clearBullet() {
+		for(int i = bullets.size() - 1; i >= 0; i--) {
+			bullets.get(i).removeBullet();
+		}
 		bullets.clear();
 	}
 		

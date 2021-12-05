@@ -96,11 +96,13 @@ public class Game extends GraphicsPane implements ActionListener{
             			 System.out.println("HIT!");
             	         b.setXY(20000,20000);
             	         enemies.get(i).killEnemy(program);
+            	         enemies.get(i).bullets.clearBullet();
+            	         
+            	         //enemies.get(i).bullets.bullets.remove(enemies.get(i).bullets.bullets);
             	         enemies.remove(enemies.get(i));
             	         //program.remove(e.enemy);
             	         //enemies.remove(e);
             	         //enemies.remove(e);
-            	         //e.bullets.clearBullet();
             	         }
             		 }
             	}
@@ -147,6 +149,7 @@ public class Game extends GraphicsPane implements ActionListener{
     @Override
     public void showContents() {
         run();
+        //timer.start();
     }
     
     @Override
@@ -156,6 +159,7 @@ public class Game extends GraphicsPane implements ActionListener{
 
           }
         program.removeAll();
+        timer.stop();
     }
     
     @Override

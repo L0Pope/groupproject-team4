@@ -59,8 +59,8 @@ public class Bullet extends Entity{
 //	}
 	
 	public void removeBullet() {
-		//screen.remove(tempSprite);
-		sprite.setLocation(0, 0);
+		screen.remove(sprite);
+		//sprite.setLocation(0, 0);
 	}
 	
 		
