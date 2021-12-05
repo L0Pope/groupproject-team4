@@ -86,8 +86,9 @@ public class Game extends GraphicsPane implements ActionListener{
             }
             
            // for(enemyship e : enemies) {
-            for(int i = 0; i < enemies.size(); i++) {
-            	for(Bullet b : playerShip.bullets.bullets) {
+
+        	for(Bullet b : playerShip.bullets.bullets) {
+        		for(int i = 0; i < enemies.size(); i++) {
             		if( ((enemies.get(i).getEnemyX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < enemies.get(i).getEnemyX() + playerShip.getPlayerWidth()))	
             		 && ((enemies.get(i).getEnemyY() < b.returnBulletY()+20) && (b.returnBulletY() < enemies.get(i).getEnemyY()+20 + playerShip.getPlayerHeight()))) {
             			 System.out.println("HIT!");
@@ -95,7 +96,7 @@ public class Game extends GraphicsPane implements ActionListener{
             	         enemies.get(i).killEnemy(program);
             	         enemies.remove(enemies.get(i));
             	         //program.remove(e.enemy);
-            	        // enemies.remove(e);
+            	         //enemies.remove(e);
             	         //enemies.remove(e);
             	         //e.bullets.clearBullet();
             	         }
@@ -186,7 +187,8 @@ public class Game extends GraphicsPane implements ActionListener{
             playerShip.move(3);
         } else if (key == right) {
             playerShip.move(4);
-        } else if (key == KeyEvent.VK_SPACE) {
+        } 
+        if (key == KeyEvent.VK_SPACE) {
         	if(count > 4) {
             playerShip.move(5);
             count = 0;
@@ -207,10 +209,13 @@ public class Game extends GraphicsPane implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        //playerShip.update();
+        playerShip.update();
         updateAllBullets();
         moveEnemies();
         count++;
+        for(enemyship enemy : enemies) {
+        	enemy.update();
+        }
         //hitbox.checkCollision();
         // update all enemies once here
         

@@ -78,20 +78,28 @@ public class PlayerShip {
 	//Function controls playerShip image movement
 	public void move(int key) {
 		if (key == 1) {
-			y -= SPEED;
-			playerShip.move(0, -SPEED);
+			if(y > 300) {
+				y -= SPEED;
+				playerShip.move(0, -SPEED);
+			}
 
 		} else if (key == 2) {
-			x -= SPEED;
-			playerShip.move(-SPEED, 0);
+			if(x > 0) {
+				x -= SPEED;
+				playerShip.move(-SPEED, 0);
+			}
 
 		} else if (key == 3) {
-			y += SPEED;
-			playerShip.move(0, SPEED);
+			if(y < 540) {
+				y += SPEED;
+				playerShip.move(0, SPEED);
+			}
 
 		} else if (key == 4){
-			x += SPEED;
-			playerShip.move(SPEED, 0);
+			if(x < 740) {
+				x += SPEED;
+				playerShip.move(SPEED, 0);
+			}
 			
 		} else if (key == 5) {
 			fireBullet();

@@ -54,7 +54,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     	return y;
     }
     
-    /*public void update() {
+    public void update() {
 
         updateBullet();
         int rand = rgen.nextInt(1500);
@@ -71,19 +71,19 @@ public class enemyship extends GraphicsProgram implements ActionListener{
         for(Bullet b : bullets.bullets) {
             b.update();
         }
-    } */
+    } 
     
     protected void finalize() {
-		movement.stop();
+		//movement.stop();
 		bullets.clearBullet();
 	}
     
-    /*public void fireBullet(){
+    public void fireBullet(){
         bullets.addBullet(new Bullet(x,y, 5, 1, friendlyBullet, screen));
-    }  */
+    }  
     
     public void run() {
-        //rgen = RandomGenerator.getInstance();
+        rgen = RandomGenerator.getInstance();
         //movement = new Timer(MS, this);
         makeBoss();
         //movement.start();
@@ -114,7 +114,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
         numTimes ++;
         moveEnemy();
         // remove update from here
-        //update();
+        update();
     }
     
     //Utilizes the timer so that it will move left and right everytime the timer reaches 5
