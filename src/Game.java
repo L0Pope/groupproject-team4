@@ -29,6 +29,8 @@ public class Game extends GraphicsPane implements ActionListener{
     public static final int SIZE = 25;
     private Timer timer;
     private int count = 20;
+    private boolean bossSpawned = false;
+    //private boolean moveSpawnedBoss = false;
 
     //private static final int SPEED = 5;
     
@@ -161,7 +163,16 @@ public class Game extends GraphicsPane implements ActionListener{
         
     }
     
-    
+    private void checkEnemiesDead() {
+    	if(enemies.size() == 0) {
+    		if(bossSpawned == false) {
+    			addBoss();
+    			moveBoss();
+;    			bossSpawned = true;
+    			//moveSpawnedBoss = true;
+    		}
+    	}
+    }
     
 
     //Calls the PlayerShip class to create and add playerShip onto the screen
@@ -216,6 +227,8 @@ public class Game extends GraphicsPane implements ActionListener{
         for(enemyship enemy : enemies) {
         	enemy.update();
         }
+        checkEnemiesDead();
+        //if(moveSpawnedBoss) moveBoss();
         //hitbox.checkCollision();
         // update all enemies once here
         
