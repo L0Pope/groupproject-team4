@@ -13,7 +13,7 @@ public class Bullet extends Entity{
 	private boolean friendlyBullet;
 	double dy; //velocity
 	int damage;
-	GImage sprite;
+	private GImage sprite;
 	GOval tempSprite;
 	int x; //bullet x coordinate
 	int y; //bullet y coordinate
@@ -27,14 +27,18 @@ public class Bullet extends Entity{
 		this.friendlyBullet = friendlyBullet;
 		this.screen = screen;
 		
+		sprite = new GImage("assets/sprites/torpedo.gif",x,y);
+		
 		tempSprite = new GOval(x,y,WIDTH,HEIGHT);
+		
+		
 		if(friendlyBullet) {
 			tempSprite.setColor(Color.white);
 		}
 		else {
 			tempSprite.setColor(Color.red);
 		}
-		screen.add(tempSprite);
+		screen.add(sprite);
 
 	}
 	public int returnBulletX() {
@@ -47,7 +51,7 @@ public class Bullet extends Entity{
 	public void setXY(int x, int y) {
 		this.x = x;
 		this.y = y;
-		screen.remove(tempSprite);
+		screen.remove(sprite);
 	}
 	
 //	public void add(PlayerShip playerShip) {
@@ -56,7 +60,7 @@ public class Bullet extends Entity{
 	
 	public void removeBullet() {
 		//screen.remove(tempSprite);
-		tempSprite.setLocation(0, 0);
+		sprite.setLocation(0, 0);
 	}
 	
 		
@@ -64,7 +68,7 @@ public class Bullet extends Entity{
 		//updates position
 		
 		y += dy;
-		tempSprite.move(0, dy);
+		sprite.move(0, dy);
 		
 		//check collision with hitbox
 	}
