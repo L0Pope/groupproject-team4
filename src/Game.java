@@ -151,7 +151,7 @@ public class Game extends GraphicsPane implements ActionListener{
     }
     
     private void moveBoss() {
-    	enemyShip.numTimes++;
+    	bossShip.numTimes++;
         bossShip.moveEnemy();
     }
     
