@@ -104,7 +104,8 @@ public class Game extends GraphicsPane implements ActionListener{
             	         b.setXY(20000,20000);
             	         enemies.get(i).killEnemy(program);
             	         enemies.get(i).bullets.clearBullet();
-            	         
+            	         playerShip.playerScore.calculateKilledEnemy(playerShip.playerScore.getScore(), playerShip.playerShipHealth.getHealth());
+
             	         //enemies.get(i).bullets.bullets.remove(enemies.get(i).bullets.bullets);
             	         enemies.remove(enemies.get(i));
             	         //program.remove(e.enemy);

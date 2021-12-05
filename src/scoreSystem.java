@@ -25,9 +25,10 @@ public class scoreSystem {
 	public void playerShipHit() {
 		this.remainingHearts -=1;
 	}
-	public void calculateScore() {
-		this.score = (remainingHearts *  100) + (killedEnemies * 1000);
-	}
+	public void calculateKilledEnemy(int score, int remainingHearts) {
+        this.score = score + (remainingHearts *10) + 20;
+    }
+	
 	public void printInfo() {
 		System.out.println("Score: " + getScore());
 		System.out.println("Remaining Hearts: " + getRemainingHearts());
