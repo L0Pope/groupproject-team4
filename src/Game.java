@@ -30,6 +30,11 @@ public class Game extends GraphicsPane implements ActionListener{
     private Timer timer;
     private int count = 20;
     private boolean bossSpawned = false;
+    private boolean pause = false;
+    private GButton pauseButton;
+	private final int BUTTON_SIZE_X = 200;
+	private final int BUTTON_SIZE_Y = 100;
+	private final int STATIC_ADDER = 50;
     //private boolean moveSpawnedBoss = false;
 
     //private static final int SPEED = 5;
@@ -44,6 +49,9 @@ public class Game extends GraphicsPane implements ActionListener{
         this.program = program;
         //hitbox = new Hitbox();
         timer = new Timer(50, this);
+        pauseButton = new GButton("Paused Click on here to continue", program.getWidth()/2-BUTTON_SIZE_X/2, program.getHeight()/2-BUTTON_SIZE_Y/2 - (3*STATIC_ADDER), BUTTON_SIZE_X, BUTTON_SIZE_Y);
+        
+        
         //hitbox.run();
         //run();
     }    
@@ -62,8 +70,7 @@ public class Game extends GraphicsPane implements ActionListener{
         makePlayerShip();
         //playerShip.addKeyListeners();
         timer.start();
-        //updateAllBullets();
-        
+        //updateAllBullets();      
     }
     
     private void updateAllBullets() {
@@ -164,7 +171,10 @@ public class Game extends GraphicsPane implements ActionListener{
     
     @Override
     public void mousePressed(MouseEvent e) {
-        
+    	GObject obj = program.getElementAt(e.getX(), e.getY());
+    	if (obj == pauseButton) {
+  		  program.remove(pauseButton);
+		}
     }
     
     private void checkEnemiesDead() {
@@ -210,8 +220,15 @@ public class Game extends GraphicsPane implements ActionListener{
         	}
         }
         if(key == KeyEvent.VK_ESCAPE) {
-            JukeBox.STOP();
+            pause = true;
+        	/*JukeBox.STOP();
             program.switchToMenu();
+            */
+            program.add(pauseButton);
+        }
+        if(key == KeyEvent.VK_P) {
+        	JukeBox.STOP();
+        	program.switchToMenu();
         }
     }
     
