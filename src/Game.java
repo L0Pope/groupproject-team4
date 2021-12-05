@@ -163,7 +163,6 @@ public class Game extends GraphicsPane implements ActionListener{
     public void hideContents() {
     	  for(int i = 0; i < enemies.size(); i++) {
               enemies.get(i).finalize();
-
           }
         program.removeAll();
         timer.stop();
@@ -174,6 +173,8 @@ public class Game extends GraphicsPane implements ActionListener{
     	GObject obj = program.getElementAt(e.getX(), e.getY());
     	if (obj == pauseButton) {
   		  program.remove(pauseButton);
+  		  timer.start();
+  		  pause = false;
 		}
     }
     
@@ -204,6 +205,7 @@ public class Game extends GraphicsPane implements ActionListener{
         int left = program.getLeft();
         int down = program.getDown();
         int right = program.getRight();
+        if(!pause) {
         if (key == forward) {
             playerShip.move(1);
         } else if(key == left) {
@@ -217,6 +219,7 @@ public class Game extends GraphicsPane implements ActionListener{
         	if(count > 4) {
             playerShip.move(5);
             count = 0;
+        		}
         	}
         }
         if(key == KeyEvent.VK_ESCAPE) {
@@ -225,6 +228,7 @@ public class Game extends GraphicsPane implements ActionListener{
             program.switchToMenu();
             */
             program.add(pauseButton);
+            timer.stop();
         }
         if(key == KeyEvent.VK_P) {
         	JukeBox.STOP();
