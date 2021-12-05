@@ -15,7 +15,7 @@ public class PlayerShip {
 	public int x = 400, y = 400;
 	private GraphicsProgram screen;
 	public Bullets bullets;
-	private final static int SPEED = 10;
+	private final static int SPEED = 15;
 	private final static int WIDTH = 50;
 	private final static int HEIGHT = 50;
 	private boolean friendlyBullet = true;
