@@ -27,11 +27,11 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     public static final int MS = 50;
     public static final int WINDOW_HEIGHT = 600;
     public static final int WINDOW_WIDTH = 800;
-    private int numTimes = -1;
+    public int numTimes = -1;
     public Boolean right = true;
     private int x, y;    
     //private GRect enemy;
-    private GImage enemy;
+    public GImage enemy;
     public Bullets bullets;
     private MainApplication program;
     private boolean friendlyBullet = false;
@@ -47,7 +47,14 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     
     }    
     
-    public void update() {
+    public int getEnemyX() {
+    	return x;
+    }
+    public int getEnemyY() {
+    	return y;
+    }
+    
+    /*public void update() {
 
         updateBullet();
         int rand = rgen.nextInt(1500);
@@ -64,16 +71,16 @@ public class enemyship extends GraphicsProgram implements ActionListener{
         for(Bullet b : bullets.bullets) {
             b.update();
         }
-    }
+    } */
     
     protected void finalize() {
 		movement.stop();
 		bullets.clearBullet();
 	}
     
-    public void fireBullet(){
+    /*public void fireBullet(){
         bullets.addBullet(new Bullet(x,y, 5, 1, friendlyBullet, screen));
-    }
+    }  */
     
     public void run() {
         //rgen = RandomGenerator.getInstance();
@@ -87,9 +94,11 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     public void makeEnemy() {
         enemy = new GImage("assets/sprites/badguy.gif", x, y);
         screen.add(enemy);
-        movement = new Timer(MS, this);
-        movement.start();
+        //movement = new Timer(MS, this);
+        //movement.start();
     }
+    
+    
     
     public void makeBoss() {
         //This is just a temp for the boss
@@ -105,7 +114,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
         numTimes ++;
         moveEnemy();
         // remove update from here
-        update();
+        //update();
     }
     
     //Utilizes the timer so that it will move left and right everytime the timer reaches 5
@@ -153,11 +162,11 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     }
     
     //Call this to Delete the Gobject
-    /*private void killEnemy() {
+    public void killEnemy(GraphicsProgram screen) {
         System.out.println("Dead!");
-        remove(enemy);
+        screen.remove(enemy);
     }
-    */
+    
     public void init() {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
     }

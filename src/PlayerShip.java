@@ -14,7 +14,7 @@ public class PlayerShip {
 	public healthSystem playerShipHealth;
 	public int x = 400, y = 400;
 	private GraphicsProgram screen;
-	private Bullets bullets;
+	public Bullets bullets;
 	private final static int SPEED = 10;
 	private final static int WIDTH = 50;
 	private final static int HEIGHT = 50;

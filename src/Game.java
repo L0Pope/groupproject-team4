@@ -53,6 +53,7 @@ public class Game extends GraphicsPane implements ActionListener{
     public void run() {
         program.add(backround);
         addEnemies();
+        makeEnemies();
         moveEnemies();
         //addBoss();
         //moveBoss();
@@ -83,10 +84,28 @@ public class Game extends GraphicsPane implements ActionListener{
                         //System.out.println("test");
                     }        
             }
-            playerShip.update();
-            //System.out.println("test");
+            
+           // for(enemyship e : enemies) {
+            for(int i = 0; i < enemies.size(); i++) {
+            	for(Bullet b : playerShip.bullets.bullets) {
+            		if( ((enemies.get(i).getEnemyX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < enemies.get(i).getEnemyX() + playerShip.getPlayerWidth()))	
+            		 && ((enemies.get(i).getEnemyY() < b.returnBulletY()+20) && (b.returnBulletY() < enemies.get(i).getEnemyY()+20 + playerShip.getPlayerHeight()))) {
+            			 System.out.println("HIT!");
+            	         b.setXY(20000,20000);
+            	         enemies.get(i).killEnemy(program);
+            	         enemies.remove(enemies.get(i));
+            	         //program.remove(e.enemy);
+            	        // enemies.remove(e);
+            	         //enemies.remove(e);
+            	         //e.bullets.clearBullet();
+            	         }
+            		 }
+            	}
+            	playerShip.update();
+            	//System.out.println("test");
+            	}
 
-    }
+    
     //Function Adds Two Rows of Enemies to An arraylist
     private void addEnemies() {
         
@@ -100,10 +119,17 @@ public class Game extends GraphicsPane implements ActionListener{
             enemies.add(enemyShip);
         }
     }
+    
+    private void makeEnemies() {
+    	for(enemyship e: enemies) {
+    		e.makeEnemy();
+    	}
+    }
     //Function Looks into the Arraylist and places the enemies onto the screen
     private void moveEnemies() {
         for(enemyship e:enemies) {
-            e.makeEnemy();
+          e.numTimes++;
+          e.moveEnemy();
         }
     }
     private void addBoss() {
@@ -183,6 +209,7 @@ public class Game extends GraphicsPane implements ActionListener{
         // TODO Auto-generated method stub
         //playerShip.update();
         updateAllBullets();
+        moveEnemies();
         count++;
         //hitbox.checkCollision();
         // update all enemies once here
