@@ -19,7 +19,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     private Timer movement;
     private RandomGenerator rgen;
     private GraphicsProgram screen;
-    private shipType typeShip;
+    public shipType typeShip;
     private healthSystem bossHealth;
     
     public static final int SIZE = 25;
@@ -105,8 +105,6 @@ public class enemyship extends GraphicsProgram implements ActionListener{
         enemy = new GImage("assets/sprites/badguy.gif");
         bossHealth = new healthSystem(shipType.BOSSSHIP, 3, false);
         screen.add(enemy); // enable this for game.java
-        movement = new Timer(MS, this);
-        movement.start();
     }
     
     //Calls to the Function that will move the enemies left and right
