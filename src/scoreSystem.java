@@ -26,7 +26,7 @@ public class scoreSystem {
 		this.remainingHearts -=1;
 	}
 	public void calculateKilledEnemy(int score, int remainingHearts) {
-        this.score = score + (remainingHearts *10) + 20;
+        this.score = score + (remainingHearts *300) + 100;
     }
 	
 	public void printInfo() {
@@ -35,16 +35,6 @@ public class scoreSystem {
 		System.out.println("Killed Enemies: " + getKilledEnemies());
 	}
 	public static void main(String args[]) {
-		scoreSystem someGame = new scoreSystem(0,3,0);
-		System.out.println("Going to test if killed enemies increments!");
-		someGame.killedEnemyShip();
-		someGame.calculateScore();
-		someGame.printInfo();
-		System.out.println("Going to test for 3 enemies killed + 2 remaining health");
-		someGame.playerShipHit();
-		someGame.killedEnemyShip();
-		someGame.killedEnemyShip();
-		someGame.calculateScore();
-		someGame.printInfo();
+		
 	}
 }
