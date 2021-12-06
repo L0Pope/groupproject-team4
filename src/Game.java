@@ -24,6 +24,7 @@ public class Game extends GraphicsPane implements ActionListener{
     private MainApplication program;
     private SettingPane setting;
     private ArrayList <enemyship> enemies = new ArrayList<enemyship>();
+    private ArrayList <enemyship> bossMinions = new ArrayList<enemyship>();
     public static final int WINDOW_HEIGHT = 600;
     public static final int WINDOW_WIDTH = 800;
     public static final int SIZE = 25;
@@ -77,7 +78,6 @@ public class Game extends GraphicsPane implements ActionListener{
     	if(!bossSpawned) {
             for(enemyship e : enemies) {
                     for(Bullet b : e.bullets.bullets) {
-                        b.update();
                         if( ((playerShip.getPlayerX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < playerShip.getPlayerX() + playerShip.getPlayerWidth()))	
                         && ((playerShip.getPlayerY() < b.returnBulletY()+20) && (b.returnBulletY() < playerShip.getPlayerY()+20 + playerShip.getPlayerHeight()))) {
                             System.out.println("HIT!");
@@ -136,6 +136,13 @@ public class Game extends GraphicsPane implements ActionListener{
                 }
     	}
     }
+    private void updateMinionBullets() {
+    	for(enemyship e: bossMinions) {
+    		for(Bullet b: e.bullets.bullets) {
+    			b.update();
+    		}
+    	}
+    }
     
     //Function Adds Two Rows of Enemies to An arraylist
     private void addEnemies() {
@@ -156,6 +163,23 @@ public class Game extends GraphicsPane implements ActionListener{
     		e.makeEnemy();
     	}
     }
+    private void addBossMinions() {
+    	for(int i = SIZE; i < 750; i+= 50) {
+    		enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, program);
+    		bossMinions.add(enemyShip);
+    	}
+    }
+    private void makeBossMinions() {
+    	for(enemyship e: bossMinions) {
+    		e.makeEnemy();
+    	}
+    }
+    private void moveBossMinions() {
+    	for(enemyship e: bossMinions) {
+    		e.numTimes++;
+    		e.moveEnemy();
+    	}
+    }
     //Function Looks into the Arraylist and places the enemies onto the screen
     private void moveEnemies() {
         for(enemyship e:enemies) {
@@ -173,7 +197,6 @@ public class Game extends GraphicsPane implements ActionListener{
         bossShip.moveEnemy();
     }
     
-
     @Override
     public void showContents() {
         run();
@@ -203,7 +226,10 @@ public class Game extends GraphicsPane implements ActionListener{
     	if(enemies.size() == 0) {
     		if(bossSpawned == false) {
     			addBoss();
-    			moveBoss();
+    			//moveBoss();
+    			addBossMinions();
+    			makeBossMinions();
+    			//moveBossMinions();
 ;    			bossSpawned = true;
     			//moveSpawnedBoss = true;
     		}
@@ -276,7 +302,11 @@ public class Game extends GraphicsPane implements ActionListener{
         	}
         } else {
         	moveBoss();
+        	moveBossMinions();
         	bossShip.update();
+        	for(enemyship b: bossMinions) {
+        		b.update();
+        	}
         }
         checkEnemiesDead();
         //if(moveSpawnedBoss) moveBoss();
