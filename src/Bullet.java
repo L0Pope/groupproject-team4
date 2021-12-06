@@ -14,6 +14,7 @@ public class Bullet extends Entity{
 	double dy; //velocity
 	int damage;
 	private GImage sprite;
+	private GImage badguyBullets;
 	GOval tempSprite;
 	int x; //bullet x coordinate
 	int y; //bullet y coordinate
@@ -28,6 +29,7 @@ public class Bullet extends Entity{
 		this.screen = screen;
 		
 		sprite = new GImage("assets/sprites/torpedo.gif",x,y);
+		badguyBullets = new GImage("assets/sprites/bossBullets.gif",x,y);
 		
 		tempSprite = new GOval(x,y,WIDTH,HEIGHT);
 		
@@ -37,6 +39,7 @@ public class Bullet extends Entity{
 		}
 		else {
 			tempSprite.setColor(Color.red);
+			sprite = badguyBullets;
 		}
 		screen.add(sprite);
 

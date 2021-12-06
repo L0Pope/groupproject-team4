@@ -41,7 +41,7 @@ public class PlayerShip {
 	
 	
 	public void fireBullet(){
-		bullets.addBullet(new Bullet(x+20,y, -15, 1, friendlyBullet, screen));
+		bullets.addBullet(new Bullet(x+12,y, -15, 1, friendlyBullet, screen));
 	}
 	private void updatePlayerBullet() {
 		for(Bullet b: bullets.bullets) {
