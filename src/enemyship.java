@@ -102,7 +102,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     
     public void makeBoss() {
         //This is just a temp for the boss
-        enemy = new GImage("assets/sprites/badguy.gif");
+        enemy = new GImage("assets/sprites/boss.gif");
         bossHealth = new healthSystem(shipType.BOSSSHIP, 20, false);
         screen.add(enemy); // enable this for game.java
     }
