@@ -199,8 +199,8 @@ public class MainApplication extends GraphicsProgram {
 		return setting.getRightLoc();
 	}
 	
-	public boolean getGame() {
-		return game;
+	public int getShoot() {
+		return setting.getShootLoc();
 	}
 
 }

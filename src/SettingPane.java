@@ -18,6 +18,7 @@ public class SettingPane extends GraphicsPane {
 	private GButton rect2;
 	private GButton rect3;
 	private GButton rect4;
+	private GButton rect5;
 	private GButton ERROR;
 	private GButton escape;
 	private GParagraph para0;
@@ -25,6 +26,8 @@ public class SettingPane extends GraphicsPane {
 	private GParagraph para2;
 	private GParagraph para3;
 	private GParagraph para4;
+	private GParagraph para5;
+	private boolean ShootRec;
 	private boolean UpRec;
 	private boolean box1;
 	private boolean LeftRec;
@@ -37,6 +40,8 @@ public class SettingPane extends GraphicsPane {
 	private char Left = 'A';
 	private char Down = 'S';
 	private char Right = 'D';
+	private char Shoot = ' ';
+	private int ShootLoc = 32;
 	private int ForwardLoc = 87;
 	private int LeftLoc = 65;
 	private int DownLoc = 83;
@@ -63,6 +68,10 @@ public class SettingPane extends GraphicsPane {
 		para3.setFont("Comic Sans MS-24");
 		rect4 = new GButton(Right, 259, BUTTON_POS_Y+135, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		para4 = new GParagraph("Right", 404, BUTTON_POS_Y+160);
+		rect5 = new GButton(Shoot, 259, BUTTON_POS_Y+180, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
+		rect5.setText("Space");
+		para5 = new GParagraph("Shoot", 404, BUTTON_POS_Y+205);
+		para5.setFont("Comic Sans MS-24");
 		para4.setFont("Comic Sans MS-24");
 		escape = new GButton("Escape", 4, 549, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		//This just makes it so its easy to call later
@@ -75,6 +84,7 @@ public class SettingPane extends GraphicsPane {
 		para2.setColor(Color.white);
 		para3.setColor(Color.white);
 		para4.setColor(Color.white);
+		para5.setColor(Color.white);
 	}
 	
 	public char getForward() {
@@ -141,6 +151,14 @@ public class SettingPane extends GraphicsPane {
 		RightLoc = rightLoc;
 	}
 
+	public int getShootLoc() {
+		return ShootLoc;
+	}
+
+	public void setShootLoc(int shootLoc) {
+		ShootLoc = shootLoc;
+	}
+
 	//if ascii(w) || ascii(i) ---> if x>
 	@Override
 	public void showContents() {
@@ -149,11 +167,13 @@ public class SettingPane extends GraphicsPane {
 		program.add(rect2);
 		program.add(rect3);
 		program.add(rect4);
+		program.add(rect5);
 		program.add(para0);
 		program.add(para);
 		program.add(para2);
 		program.add(para3);
 		program.add(para4);
+		program.add(para5);
 		program.add(escape);
 	}
 
@@ -171,25 +191,41 @@ public class SettingPane extends GraphicsPane {
 			LeftRec = false;
 			DownRec = false;
 			RightRec = false;
+			ShootRec = false;
 		}
+	
 		if(obj == rect2) {
 			UpRec = false;
 			LeftRec = true;
 			DownRec = false;
 			RightRec = false;
+			ShootRec = false;
 		}
+		
 		if(obj == rect3) {
 			UpRec = false;
 			LeftRec = false;
 			DownRec = true;
 			RightRec = false;
+			ShootRec = false;
 		}
+		
 		if(obj == rect4) {
 			UpRec = false;
 			LeftRec = false;
 			DownRec = false;
 			RightRec = true;
+			ShootRec = false;
 		}
+		
+		if(obj == rect5) {
+			UpRec = false;
+			LeftRec = false;
+			DownRec = false;
+			RightRec = false;
+			ShootRec = true;
+		}
+		
 		if(obj != ERROR) {
 			program.remove(ERROR);
 		}
@@ -203,7 +239,7 @@ public class SettingPane extends GraphicsPane {
 	public void keyPressed(KeyEvent e) {
 		//might want to set the values shown to be CAPS but just keep it constant.
 		if(UpRec) {
-			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != LeftLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != DownLoc)) {
+			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != LeftLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != DownLoc && e.getKeyCode() != ShootLoc)) {
 				Forward = e.getKeyChar();
 				ForwardLoc = e.getKeyCode();
 				//might need a location call
@@ -217,7 +253,7 @@ public class SettingPane extends GraphicsPane {
 		}
 		
 		if(LeftRec) {
-			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != DownLoc)) {
+			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != DownLoc && e.getKeyCode() != ShootLoc)) {
 				Left = e.getKeyChar();
 				LeftLoc = e.getKeyCode();
 				rect2.setText(String.valueOf(Left).toUpperCase());
@@ -230,7 +266,7 @@ public class SettingPane extends GraphicsPane {
 		}
 		
 		if(DownRec) {
-			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != LeftLoc)) {
+			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != LeftLoc && e.getKeyCode() != ShootLoc)) {
 				Down = e.getKeyChar();
 				DownLoc = e.getKeyCode();
 				rect3.setText(String.valueOf(Down).toUpperCase());
@@ -243,7 +279,7 @@ public class SettingPane extends GraphicsPane {
 		}
 		
 		if(RightRec) {
-			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != DownLoc && e.getKeyCode() != LeftLoc)) {
+			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != DownLoc && e.getKeyCode() != LeftLoc && e.getKeyCode() != ShootLoc)) {
 				Right = e.getKeyChar();
 				RightLoc = e.getKeyCode();
 				rect4.setText(String.valueOf(Right).toUpperCase());
@@ -254,6 +290,25 @@ public class SettingPane extends GraphicsPane {
 				program.add(ERROR);
 			}
 		}
+		
+		if(ShootRec) {
+			if((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <=122) || (e.getKeyCode() == 32) && (e.getKeyCode() != ForwardLoc && e.getKeyCode() != LeftLoc && e.getKeyCode() != DownLoc && e.getKeyCode() != RightLoc)) {
+				Shoot = e.getKeyChar();
+				ShootLoc = e.getKeyCode();
+				if(ShootLoc == 32) {
+					rect5.setText("Space");
+				}
+				else {
+					rect5.setText(String.valueOf(Shoot).toUpperCase());
+				}
+				ShootRec = !ShootRec;
+				System.out.println("SHOOT CHANGED");
+			}
+			else {
+				program.add(ERROR);
+			}
+		}
+		
 		if(e.getKeyCode() == 27) {
 			program.remove(ERROR);
 		}

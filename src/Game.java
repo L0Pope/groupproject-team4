@@ -252,6 +252,7 @@ public class Game extends GraphicsPane implements ActionListener{
         int left = program.getLeft();
         int down = program.getDown();
         int right = program.getRight();
+        int shoot = program.getShoot();
         if(!pause) {
         if (key == forward) {
             playerShip.move(1);
@@ -262,7 +263,7 @@ public class Game extends GraphicsPane implements ActionListener{
         } else if (key == right) {
             playerShip.move(4);
         } 
-        if (key == KeyEvent.VK_SPACE) {
+        if (key == shoot) {
         	if(count > 4) {
             playerShip.move(5);
             count = 0;
