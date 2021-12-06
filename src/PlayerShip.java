@@ -12,6 +12,7 @@ import acm.graphics.GOval;
 
 public class PlayerShip {
 	public GImage playerShip;
+	private ArrayList<GImage> hearts = new ArrayList<GImage>(3);
 	public healthSystem playerShipHealth;
 	public scoreSystem playerScore;
 	public int x = 400, y = 400;
@@ -21,7 +22,6 @@ public class PlayerShip {
 	private final static int WIDTH = 50;
 	private final static int HEIGHT = 50;
 	private boolean friendlyBullet = true;
-	private ArrayList<GRect> hearts = new ArrayList<GRect>(3);
 	private GLabel score = new GLabel ("Score: ", 10, 590);
 
 
@@ -58,8 +58,7 @@ public class PlayerShip {
 		screen.add(playerShip);
 		for(int i = 0; i < 3; i++) {
 			int multipler = i*30;
-			hearts.add(new GRect(770, 500+multipler, 25, 25));
-			hearts.get(i).setColor(Color.MAGENTA);
+			hearts.add(new GImage("assets/sprites/heart.png", 770, 500+multipler));
 			screen.add(hearts.get(i));
 			
 			playerScore = new scoreSystem(0, 3, 0);
