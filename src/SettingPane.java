@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.awt.event.ActionEvent;
 
 import acm.graphics.GImage;
@@ -13,6 +14,7 @@ public class SettingPane extends GraphicsPane {
 	private MainApplication program;
 	//private AudioPlayer Audio;
 	
+	private File back = new File("assets/bgm/BACK.wav");
 	private GImage backround;
 	private GButton rect;
 	private GButton rect2;
@@ -49,6 +51,9 @@ public class SettingPane extends GraphicsPane {
 	private final int BUTTON_SIZE_X = 300;
 	private final int BUTTON_SIZE_Y = 200;
 	private final int BUTTON_POS_Y = 100;
+	
+	Color c = new Color(0f,0f,1f,.2f );
+
 
 	//TODO we need WASD editing, audio.
 	public SettingPane(MainApplication app) {
@@ -56,23 +61,23 @@ public class SettingPane extends GraphicsPane {
 		program = app;
 		backround = new GImage("assets/sprites/animatedMenu.gif");
 		para0 = new GParagraph("HOW TO PLAY", 300, 50);
-		para0.setFont("Comic Sans MS-24");
+		para0.setFont("Arial MS-24");
 		rect = new GButton(Forward, 259, BUTTON_POS_Y, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		para = new GParagraph("Up", 404, BUTTON_POS_Y+25);
-		para.setFont("Comic Sans MS-24");
+		para.setFont("Arial MS-24");
 		rect2 = new GButton(Left, 259, BUTTON_POS_Y+45, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		para2 = new GParagraph("Left", 404, BUTTON_POS_Y+70);
-		para2.setFont("Comic Sans MS-24");
+		para2.setFont("Arial MS-24");
 		rect3 = new GButton(Down, 259, BUTTON_POS_Y+90, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		para3 = new GParagraph("Down", 404, BUTTON_POS_Y+115);
-		para3.setFont("Comic Sans MS-24");
+		para3.setFont("Arial MS-24");
 		rect4 = new GButton(Right, 259, BUTTON_POS_Y+135, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		para4 = new GParagraph("Right", 404, BUTTON_POS_Y+160);
 		rect5 = new GButton(Shoot, 259, BUTTON_POS_Y+180, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		rect5.setText("Space");
 		para5 = new GParagraph("Shoot", 404, BUTTON_POS_Y+205);
-		para5.setFont("Comic Sans MS-24");
-		para4.setFont("Comic Sans MS-24");
+		para5.setFont("Arial MS-24");
+		para4.setFont("Arial MS-24");
 		escape = new GButton("Escape", 4, 549, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		//This just makes it so its easy to call later
 		ERROR = new GButton("Invalid key selection", 259, BUTTON_POS_Y, BUTTON_SIZE_X, BUTTON_SIZE_Y, Color.white);
@@ -85,6 +90,7 @@ public class SettingPane extends GraphicsPane {
 		para3.setColor(Color.white);
 		para4.setColor(Color.white);
 		para5.setColor(Color.white);
+		
 	}
 	
 	public char getForward() {
@@ -231,6 +237,7 @@ public class SettingPane extends GraphicsPane {
 		}
 		if(obj == escape) {
 			JukeBox.STOP();
+			JukeBox.PLAY(back);
 			program.switchToMenu();
 		}
 	}

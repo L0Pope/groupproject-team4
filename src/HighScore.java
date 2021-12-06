@@ -1,5 +1,6 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -12,6 +13,8 @@ public class HighScore extends GraphicsPane {
     private MainApplication program;
     private GParagraph para;
     private GButton box1;
+    
+    File back = new File ("assets/bgm/BACK.wav");
 
 
     public HighScore(MainApplication app) {
@@ -39,6 +42,7 @@ public class HighScore extends GraphicsPane {
         GObject obj = program.getElementAt(e.getX(), e.getY());
         if (obj == box1) {
         	JukeBox.STOP();
+        	JukeBox.PLAY(back);
             program.switchToMenu();
         }
     }

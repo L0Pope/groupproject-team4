@@ -9,6 +9,8 @@ public class MainApplication extends GraphicsProgram {
 	File menuBGM = new File ("assets/bgm/Menu.wav");
 	File test = new File ("assets/bgm/TestAudio.wav");
 	File Game = new File("assets/bgm/fight!.wav");
+	File yes = new File ("assets/bgm/CONFIRMATION.wav");
+	File no = new File("assets/bgm/BACK.wav");
 	
 	//public static final int WINDOW_WIDTH = 1920;
 	public static final int WINDOW_WIDTH = 800;
@@ -126,6 +128,7 @@ public class MainApplication extends GraphicsProgram {
 
 	public void switchToSetting() {
 		JukeBox.STOP();
+		JukeBox.PLAY(yes);
 		switchToScreen(setting);
 		game = !game;
 		JukeBox.PLAY(test);
@@ -145,6 +148,7 @@ public class MainApplication extends GraphicsProgram {
 	
 	public void switchToPlay() {
 		JukeBox.STOP();
+		JukeBox.PLAY(yes);
 		switchToScreen(gameScreen);
 		game = true;
 		JukeBox.PLAY(Game);
@@ -152,6 +156,7 @@ public class MainApplication extends GraphicsProgram {
 	
 	public void switchToHighScore() {
 		JukeBox.STOP();
+		JukeBox.PLAY(yes);
 		switchToScreen(HighScore);
 		game = !game;
 		JukeBox.PLAY(test);

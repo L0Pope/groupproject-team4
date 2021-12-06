@@ -39,6 +39,8 @@ public class Game extends GraphicsPane implements ActionListener{
     //private boolean moveSpawnedBoss = false;
 
     //private static final int SPEED = 5;
+	
+	Color c = new Color(1f,0f,0f,.2f );
     
     enemyship enemyShip;
     enemyship bossShip;
@@ -50,9 +52,10 @@ public class Game extends GraphicsPane implements ActionListener{
         this.program = program;
         //hitbox = new Hitbox();
         timer = new Timer(50, this);
-        pauseButton = new GButton("Paused Click on here to continue", program.getWidth()/2-BUTTON_SIZE_X/2, program.getHeight()/2-BUTTON_SIZE_Y/2 - (3*STATIC_ADDER), BUTTON_SIZE_X, BUTTON_SIZE_Y);
+        pauseButton = new GButton("Click on here to continue", program.getWidth()/2-BUTTON_SIZE_X/2, program.getHeight()/2-BUTTON_SIZE_Y/2 - (3*STATIC_ADDER), BUTTON_SIZE_X, BUTTON_SIZE_Y);
         DEAD = new GButton("DEAD", program.getWidth()/2-BUTTON_SIZE_X/2, program.getHeight()/2-BUTTON_SIZE_Y/2 - (3*STATIC_ADDER), BUTTON_SIZE_X, BUTTON_SIZE_Y);
-        
+        pauseButton.setFillColor(c);
+        pauseButton.setColor(Color.white);
         //hitbox.run();
         //run();
     }    
