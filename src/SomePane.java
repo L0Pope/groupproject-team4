@@ -17,7 +17,7 @@ public class SomePane extends GraphicsPane {
         this.program = app;
         //img = new GImage("robot head.jpg", 100, 100); 
         para = new GParagraph("Play Game", 150, 300);
-        para.setFont("Comic Sans MS-24");
+        para.setFont("Arial MS-24");
         background = new GImage("assets/sprites/animatedMenu.gif");
         para.setColor(Color.WHITE);
     }
@@ -53,6 +53,7 @@ public class SomePane extends GraphicsPane {
         if(e.getKeyCode() == 27) {
             program.switchToMenu();
             System.out.println("Switching to Main Menu");
+            JukeBox.STOP();
         }
     }
 }

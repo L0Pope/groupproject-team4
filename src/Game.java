@@ -20,6 +20,8 @@ import acm.util.RandomGenerator;
 public class Game extends GraphicsPane implements ActionListener{
     
     File Game = new File("assets/bgm/fight!.wav");
+    File menu = new File("assets/bgm/MENU.wav");
+    
     private GImage backround;
     private MainApplication program;
     private SettingPane setting;
@@ -122,6 +124,7 @@ public class Game extends GraphicsPane implements ActionListener{
                         if(playerShip.playerShipHealth.isDestroyed() == true) {
                         	System.out.println("Player is Dead"); //CALL GAME OVER
                         	program.switchToSome();
+                        	JukeBox.STOP();
                         }
                     }        
                 }
@@ -136,6 +139,7 @@ public class Game extends GraphicsPane implements ActionListener{
                 		if(bossShip.bossHealth.isDestroyed() == true) {
                         	System.out.println("Boss is Dead"); //CALL GAME OVER
                         	program.switchToSome();
+                        	JukeBox.STOP();
                         }
                 	}
                 }
