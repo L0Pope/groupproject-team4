@@ -38,6 +38,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	private final int BUTTON_SIZE_Y = 100;
 	private final int STATIC_ADDER = 50;
 	private GButton DEAD;
+	private Boolean playerDead = false;
     //private boolean moveSpawnedBoss = false;
 
     //private static final int SPEED = 5;
@@ -91,6 +92,10 @@ public class Game extends GraphicsPane implements ActionListener{
                             System.out.println(playerShip.playerShipHealth.getHealth());
                             if(playerShip.playerShipHealth.isDestroyed() == true) {
                             	System.out.println("Player is Dead"); //CALL GAME OVER
+                            	//program.switchToSome();
+                            	playerDead = true;
+                            	//JukeBox.STOP();
+                            	return;
                             }
                         }        
                     }
@@ -123,8 +128,10 @@ public class Game extends GraphicsPane implements ActionListener{
                         System.out.println(playerShip.playerShipHealth.getHealth());
                         if(playerShip.playerShipHealth.isDestroyed() == true) {
                         	System.out.println("Player is Dead"); //CALL GAME OVER
-                        	program.switchToSome();
-                        	JukeBox.STOP();
+                        	//program.switchToSome();
+                        	//JukeBox.STOP();
+                        	playerDead = true;
+                        	return;
                         }
                     }        
                 }
@@ -138,8 +145,9 @@ public class Game extends GraphicsPane implements ActionListener{
                 		System.out.println(bossShip.bossHealth.getHealth());
                 		if(bossShip.bossHealth.isDestroyed() == true) {
                         	System.out.println("Boss is Dead"); //CALL GAME OVER
-                        	program.switchToSome();
-                        	JukeBox.STOP();
+                        	playerDead = true;
+                        	//program.switchToSome();
+                        	//JukeBox.STOP();
                         }
                 	}
                 }
@@ -246,6 +254,15 @@ public class Game extends GraphicsPane implements ActionListener{
         playerShip.makePlayerShip();
         //addKeyListeners();
     }
+    public void resetGame() {
+    	if (enemies.size() != 0) {
+    		enemies.clear();
+    	}
+    	timer.stop();
+    	bossSpawned = false;
+    	playerDead = false;
+    	
+    }
     
     //KeyListeners used to move playerShip using WASD
     @Override
@@ -295,23 +312,26 @@ public class Game extends GraphicsPane implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        playerShip.update();
-        updateAllBullets();
-        count++;
-        moveEnemies();
-        for(enemyship enemy : enemies) {
-        	enemy.update();
-        }
-        	
-        if(bossSpawned){
-        	moveBoss();
-        	bossShip.update();
-        }
-        checkEnemiesDead();
-        //if(moveSpawnedBoss) moveBoss();
-        //hitbox.checkCollision();
-        // update all enemies once here
-        
+    	if(!playerDead) {
+	        // TODO Auto-generated method stub
+	        playerShip.update();
+	        updateAllBullets();
+	        count++;
+	        moveEnemies();
+	        for(enemyship enemy : enemies) {
+	        	enemy.update();
+	        }
+	        	
+	        if(bossSpawned){
+	        	moveBoss();
+	        	bossShip.update();
+	        }
+	        checkEnemiesDead();
+    	}
+    	else {
+    		resetGame();
+    		program.switchToSome();
+    		//timer.stop();
+    	}
     }
 }

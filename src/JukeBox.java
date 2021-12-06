@@ -2,6 +2,7 @@ import java.io.File;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 //lets get jazzy
 
@@ -16,6 +17,8 @@ public class JukeBox {
 			Audio = AudioSystem.getClip();
 			Audio.open(AudioSystem.getAudioInputStream(SelectedAudio));
 			Audio.start();
+			FloatControl gameControl = (FloatControl)Audio.getControl(FloatControl.Type.MASTER_GAIN);
+			gameControl.setValue(-20.0f);
 			
 			//Thread.sleep(Audio.getMicrosecondLength()/1000);
 		}
