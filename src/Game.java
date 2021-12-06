@@ -24,7 +24,6 @@ public class Game extends GraphicsPane implements ActionListener{
     private MainApplication program;
     private SettingPane setting;
     private ArrayList <enemyship> enemies = new ArrayList<enemyship>();
-    private ArrayList <enemyship> bossMinions = new ArrayList<enemyship>();
     public static final int WINDOW_HEIGHT = 600;
     public static final int WINDOW_WIDTH = 800;
     public static final int SIZE = 25;
@@ -75,7 +74,6 @@ public class Game extends GraphicsPane implements ActionListener{
     }
     
     private void updateAllBullets() {
-    	if(!bossSpawned) {
             for(enemyship e : enemies) {
                     for(Bullet b : e.bullets.bullets) {
                         if( ((playerShip.getPlayerX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < playerShip.getPlayerX() + playerShip.getPlayerWidth()))	
@@ -106,7 +104,8 @@ public class Game extends GraphicsPane implements ActionListener{
             		 }
             	}
             	//playerShip.update();
-    	} else {
+
+        	if(bossSpawned) { 
                 for(Bullet b : bossShip.bullets.bullets) {
                     b.update();
                     if( ((playerShip.getPlayerX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < playerShip.getPlayerX() + playerShip.getPlayerWidth()))	
@@ -136,56 +135,51 @@ public class Game extends GraphicsPane implements ActionListener{
                 }
     	}
     }
-    private void updateMinionBullets() {
-    	for(enemyship e: bossMinions) {
-    		for(Bullet b: e.bullets.bullets) {
-    			b.update();
-    		}
-    	}
-    }
     
     //Function Adds Two Rows of Enemies to An arraylist
     private void addEnemies() {
+        if(!bossSpawned) {
+        	for(int i = SIZE; i < 750/*WINDOW_WIDTH-SIZE/2*/; i += 50) {
+        		enemyShip = new enemyship(shipType.ENEMYSHIP, i, 25, program);
+        		enemies.add(enemyShip);
+        	}
         
-        for(int i = SIZE; i < 750/*WINDOW_WIDTH-SIZE/2*/; i += 50) {
-            enemyShip = new enemyship(shipType.ENEMYSHIP, i, 25, program);
-            enemies.add(enemyShip);
-        }
-        
-        for(int i = SIZE+100; i < 650; i+=50) {
-            enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, program);
-            enemies.add(enemyShip);
+        	for(int i = SIZE+100; i < 650; i+=50) {
+        		enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, program);
+        		enemies.add(enemyShip);
+        	}
+        } else {
+        	for(int i = SIZE; i < 750; i+= 50) {
+        		enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, program);
+        		enemies.add(enemyShip);
+        	}	
         }
     }
     
     private void makeEnemies() {
-    	for(enemyship e: enemies) {
-    		e.makeEnemy();
-    	}
-    }
-    private void addBossMinions() {
-    	for(int i = SIZE; i < 750; i+= 50) {
-    		enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, program);
-    		bossMinions.add(enemyShip);
-    	}
-    }
-    private void makeBossMinions() {
-    	for(enemyship e: bossMinions) {
-    		e.makeEnemy();
-    	}
-    }
-    private void moveBossMinions() {
-    	for(enemyship e: bossMinions) {
-    		e.numTimes++;
-    		e.moveEnemy();
+    	if (!bossSpawned) {
+    		for(enemyship e: enemies) {
+    			e.makeEnemy();
+    		}
+    	} else {
+    		for(enemyship e: enemies) {
+        		e.makeEnemy();
+        	}
     	}
     }
     //Function Looks into the Arraylist and places the enemies onto the screen
     private void moveEnemies() {
-        for(enemyship e:enemies) {
-          e.numTimes++;
-          e.moveEnemy();
-        }
+    	if(!bossSpawned) {
+    		for(enemyship e:enemies) {
+    			e.numTimes++;
+    			e.moveEnemy();
+    		}
+    	} else {
+    		for(enemyship e: enemies) {
+        		e.numTimes++;
+        		e.moveEnemy();
+        	}
+    	}
     }
     private void addBoss() {
         bossShip = new enemyship(shipType.BOSSSHIP, 20, 50, program);
@@ -226,11 +220,10 @@ public class Game extends GraphicsPane implements ActionListener{
     	if(enemies.size() == 0) {
     		if(bossSpawned == false) {
     			addBoss();
-    			//moveBoss();
-    			addBossMinions();
-    			makeBossMinions();
-    			//moveBossMinions();
-;    			bossSpawned = true;
+    			bossSpawned = true;
+    			addEnemies();
+    			makeEnemies();
+
     			//moveSpawnedBoss = true;
     		}
     	}
@@ -296,18 +289,14 @@ public class Game extends GraphicsPane implements ActionListener{
         playerShip.update();
         updateAllBullets();
         count++;
-        if(!bossSpawned) {
-        	moveEnemies();
-        	for(enemyship enemy : enemies) {
-        		enemy.update();
-        	}
-        } else {
+        moveEnemies();
+        for(enemyship enemy : enemies) {
+        	enemy.update();
+        }
+        	
+        if(bossSpawned){
         	moveBoss();
-        	moveBossMinions();
         	bossShip.update();
-        	for(enemyship b: bossMinions) {
-        		b.update();
-        	}
         }
         checkEnemiesDead();
         //if(moveSpawnedBoss) moveBoss();
