@@ -122,7 +122,7 @@ public class Game extends GraphicsPane implements ActionListener{
                 }
         
                 for(Bullet b : playerShip.bullets.bullets) {
-                	if( ((bossShip.getEnemyX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < bossShip.getEnemyX() + playerShip.getPlayerWidth()))	
+                	if( ((bossShip.getEnemyX()-30 < b.returnBulletX()) && (b.returnBulletX() < bossShip.getEnemyX()+40 + playerShip.getPlayerWidth()))	
                 	&& ((bossShip.getEnemyY() < b.returnBulletY()+20) && (b.returnBulletY() < bossShip.getEnemyY()+20 + playerShip.getPlayerHeight()))) {
                 		System.out.println("HIT!");
                 		b.setXY(20000,20000);
@@ -150,7 +150,7 @@ public class Game extends GraphicsPane implements ActionListener{
         	}
         } else {
         	for(int i = SIZE; i < 750; i+= 50) {
-        		enemyShip = new enemyship(shipType.ENEMYSHIP, i, 75, program);
+        		enemyShip = new enemyship(shipType.ENEMYSHIP, i, 120, program);
         		enemies.add(enemyShip);
         	}	
         }
