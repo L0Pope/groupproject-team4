@@ -117,6 +117,7 @@ public class Game extends GraphicsPane implements ActionListener{
                         System.out.println(playerShip.playerShipHealth.getHealth());
                         if(playerShip.playerShipHealth.isDestroyed() == true) {
                         	System.out.println("Player is Dead"); //CALL GAME OVER
+                        	program.switchToSome();
                         }
                     }        
                 }
