@@ -35,6 +35,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	private final int BUTTON_SIZE_X = 200;
 	private final int BUTTON_SIZE_Y = 100;
 	private final int STATIC_ADDER = 50;
+	private GButton DEAD;
     //private boolean moveSpawnedBoss = false;
 
     //private static final int SPEED = 5;
@@ -50,7 +51,7 @@ public class Game extends GraphicsPane implements ActionListener{
         //hitbox = new Hitbox();
         timer = new Timer(50, this);
         pauseButton = new GButton("Paused Click on here to continue", program.getWidth()/2-BUTTON_SIZE_X/2, program.getHeight()/2-BUTTON_SIZE_Y/2 - (3*STATIC_ADDER), BUTTON_SIZE_X, BUTTON_SIZE_Y);
-        
+        DEAD = new GButton("DEAD", program.getWidth()/2-BUTTON_SIZE_X/2, program.getHeight()/2-BUTTON_SIZE_Y/2 - (3*STATIC_ADDER), BUTTON_SIZE_X, BUTTON_SIZE_Y);
         
         //hitbox.run();
         //run();
@@ -131,6 +132,7 @@ public class Game extends GraphicsPane implements ActionListener{
                 		System.out.println(bossShip.bossHealth.getHealth());
                 		if(bossShip.bossHealth.isDestroyed() == true) {
                         	System.out.println("Boss is Dead"); //CALL GAME OVER
+                        	program.switchToSome();
                         }
                 	}
                 }
