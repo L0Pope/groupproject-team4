@@ -42,8 +42,8 @@ public class SettingPane extends GraphicsPane {
 	private char Left = 'A';
 	private char Down = 'S';
 	private char Right = 'D';
-	private char Shoot = ' ';
-	private int ShootLoc = 32;
+	private char Shoot = 'K';
+	private int ShootLoc = 75;
 	private int ForwardLoc = 87;
 	private int LeftLoc = 65;
 	private int DownLoc = 83;
@@ -74,7 +74,7 @@ public class SettingPane extends GraphicsPane {
 		rect4 = new GButton(Right, 259, BUTTON_POS_Y+135, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		para4 = new GParagraph("Right", 404, BUTTON_POS_Y+160);
 		rect5 = new GButton(Shoot, 259, BUTTON_POS_Y+180, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
-		rect5.setText("Space");
+		rect5.setText("K");
 		para5 = new GParagraph("Shoot", 404, BUTTON_POS_Y+205);
 		para5.setFont("Arial MS-24");
 		para4.setFont("Arial MS-24");
@@ -90,6 +90,20 @@ public class SettingPane extends GraphicsPane {
 		para3.setColor(Color.white);
 		para4.setColor(Color.white);
 		para5.setColor(Color.white);
+		
+		rect.setFillColor(c);
+		rect2.setFillColor(c);
+		rect3.setFillColor(c);
+		rect4.setFillColor(c);
+		rect5.setFillColor(c);
+		
+		rect.setColor(Color.white);
+		rect2.setColor(Color.white);
+		rect3.setColor(Color.white);
+		rect4.setColor(Color.white);
+		rect5.setColor(Color.white);
+		
+		
 		
 	}
 	

@@ -51,8 +51,6 @@ public class HighScore extends GraphicsPane {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == 27) {
-            program.switchToMenu();
-        }
+        
     }
 }
