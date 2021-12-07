@@ -28,6 +28,9 @@ public class scoreSystem {
 	public void calculateKilledEnemy(int score, int remainingHearts) {
         this.score = score + (remainingHearts *300) + 100;
     }
+	public void calculateKilledBoss(int score, int remainingHearts) {
+		this.score = score + (remainingHearts * 300) + 20000;
+	}
 	
 	public void printInfo() {
 		System.out.println("Score: " + getScore());

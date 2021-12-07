@@ -142,9 +142,11 @@ public class Game extends GraphicsPane implements ActionListener{
                 		System.out.println("HIT!");
                 		b.setXY(20000,20000);
                 		bossShip.subtractBossHealth();
+                		playerShip.playerScore.calculateKilledEnemy(playerShip.playerScore.getScore(), playerShip.playerShipHealth.getHealth());
                 		System.out.println(bossShip.bossHealth.getHealth());
                 		if(bossShip.bossHealth.isDestroyed() == true) {
                         	System.out.println("Boss is Dead"); //CALL GAME OVER
+                        	playerShip.playerScore.calculateKilledBoss(playerShip.playerScore.getScore(), playerShip.playerShipHealth.getHealth());
                         	playerDead = true;
                         	//program.switchToSome();
                         	//JukeBox.STOP();
