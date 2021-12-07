@@ -1,16 +1,10 @@
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
-
 import acm.graphics.GImage;
-import acm.graphics.GLabel;
 import acm.graphics.GObject;
-import acm.graphics.GRect;
 
 public class HighScore extends GraphicsPane {
-
-    // you will use program to get access to all of the GraphicsProgram calls
 	private GImage backround;
     private MainApplication program;
     private GButton score;
@@ -114,12 +108,5 @@ public class HighScore extends GraphicsPane {
         	JukeBox.PLAY(back);
             program.switchToMenu();
         }
-    }
-
-
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        
     }
 }

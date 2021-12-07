@@ -2,18 +2,13 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.awt.event.ActionEvent;
-
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 
 public class SettingPane extends GraphicsPane {
 	
-	// you will use program to get access to all of the GraphicsProgram calls
 	private MainApplication program;
-	//private AudioPlayer Audio;
-	
 	private File back = new File("assets/bgm/BACK.wav");
 	private GImage backround;
 	private GButton rect;
@@ -31,13 +26,9 @@ public class SettingPane extends GraphicsPane {
 	private GParagraph para5;
 	private boolean ShootRec;
 	private boolean UpRec;
-	private boolean box1;
 	private boolean LeftRec;
-	private boolean box2;
 	private boolean DownRec;
-	private boolean box3;
 	private boolean RightRec;
-	private boolean box4;
 	private char Forward = 'W';
 	private char Left = 'A';
 	private char Down = 'S';
@@ -51,11 +42,8 @@ public class SettingPane extends GraphicsPane {
 	private final int BUTTON_SIZE_X = 300;
 	private final int BUTTON_SIZE_Y = 200;
 	private final int BUTTON_POS_Y = 100;
-	
 	Color c = new Color(0f,0f,1f,.2f );
 
-
-	//TODO we need WASD editing, audio.
 	public SettingPane(MainApplication app) {
 		super();
 		program = app;
@@ -79,7 +67,6 @@ public class SettingPane extends GraphicsPane {
 		para5.setFont("Arial MS-24");
 		para4.setFont("Arial MS-24");
 		escape = new GButton("Escape", 4, 549, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
-		//This just makes it so its easy to call later
 		ERROR = new GButton("Invalid key selection", 259, BUTTON_POS_Y, BUTTON_SIZE_X, BUTTON_SIZE_Y, Color.white);
 		ERROR.setFillColor(Color.black);
 		ERROR.setColor(Color.white);
@@ -178,8 +165,7 @@ public class SettingPane extends GraphicsPane {
 	public void setShootLoc(int shootLoc) {
 		ShootLoc = shootLoc;
 	}
-
-	//if ascii(w) || ascii(i) ---> if x>
+	
 	@Override
 	public void showContents() {
 		program.add(backround);
@@ -203,8 +189,6 @@ public class SettingPane extends GraphicsPane {
 	}
 	
 	public void mousePressed(MouseEvent e) {
-		System.out.println(e.getX());
-		System.out.println(e.getY());
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		if(obj == rect) {
 			UpRec = true;
@@ -258,17 +242,14 @@ public class SettingPane extends GraphicsPane {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		//might want to set the values shown to be CAPS but just keep it constant.
 		if(UpRec) {
 			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122)) && (e.getKeyCode() != LeftLoc && e.getKeyCode() != RightLoc && e.getKeyCode() != DownLoc && e.getKeyCode() != ShootLoc)) {
 				Forward = e.getKeyChar();
 				ForwardLoc = e.getKeyCode();
-				//might need a location call
 				rect.setText(String.valueOf(Forward).toUpperCase());
 				UpRec = !UpRec;
 			}
 			else {
-				box1 = true;
 				program.add(ERROR);
 			}
 		}
@@ -281,7 +262,6 @@ public class SettingPane extends GraphicsPane {
 				LeftRec = !LeftRec;
 			}
 			else {
-				box2 = true;
 				program.add(ERROR);
 			}
 		}
@@ -294,7 +274,6 @@ public class SettingPane extends GraphicsPane {
 				DownRec = !DownRec;
 			}
 			else {
-				box3 = true;
 				program.add(ERROR);
 			}
 		}
@@ -307,7 +286,6 @@ public class SettingPane extends GraphicsPane {
 				RightRec = !RightRec;
 			}
 			else {
-				box4 = true;
 				program.add(ERROR);
 			}
 		}
@@ -323,7 +301,6 @@ public class SettingPane extends GraphicsPane {
 					rect5.setText(String.valueOf(Shoot).toUpperCase());
 				}
 				ShootRec = !ShootRec;
-				System.out.println("SHOOT CHANGED");
 			}
 			else {
 				program.add(ERROR);
@@ -335,13 +312,3 @@ public class SettingPane extends GraphicsPane {
 		}
 	}
 }
-/*
-	@Override
-	public void mousePressed(MouseEvent e) {
-		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == audiorec) {
-			
-		}
-	}
-}
-*/

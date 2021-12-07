@@ -1,4 +1,3 @@
-import javax.print.attribute.standard.PrinterInfo;
 
 public class scoreSystem {
 	private int score, remainingHearts, killedEnemies;
@@ -30,14 +29,5 @@ public class scoreSystem {
     }
 	public void calculateKilledBoss(int score, int remainingHearts) {
 		this.score = score + (remainingHearts * 300) + 20000;
-	}
-	
-	public void printInfo() {
-		System.out.println("Score: " + getScore());
-		System.out.println("Remaining Hearts: " + getRemainingHearts());
-		System.out.println("Killed Enemies: " + getKilledEnemies());
-	}
-	public static void main(String args[]) {
-		
 	}
 }

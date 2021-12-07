@@ -1,16 +1,9 @@
 import java.awt.Color;
 import java.awt.event.MouseEvent;
-
-import javax.swing.JFrame;
-
-import acm.graphics.GCanvas;
-import acm.graphics.GCompound;
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 public class MenuPane extends GraphicsPane {
-	
-	// you will use program to get access to all of the GraphicsProgram calls
 	private MainApplication program;
 	private GImage background;
 	private GImage menu;
@@ -21,7 +14,6 @@ public class MenuPane extends GraphicsPane {
 	private final int BUTTON_SIZE_X = 200;
 	private final int BUTTON_SIZE_Y = 100;
 	private final int STATIC_ADDER = 50;
-	
 	Color c = new Color(0f,0f,1f,.2f );
 
 	public MenuPane(MainApplication app) {
@@ -62,22 +54,16 @@ public class MenuPane extends GraphicsPane {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		System.out.println(e.getX());
-		System.out.println(e.getY());
 		if (obj == rect) {
 			program.switchToPlay();
-			System.out.println("WELCOME TO PLAYING THE GAME");
 		}
 		if (obj == rect2) {
 			program.switchToSetting();
-			System.out.println("WELCOME TO THE SETTINGS");
 		}
 		if (obj == rect3) {
 			program.switchToHighScore();
-			System.out.println("WELCOME TO THE HIGH SCORE");
 		}
 		if (obj == rect4) {
-			System.out.println("GOODBYE MOON MAN");
 			System.exit(0);
 		}
 	}

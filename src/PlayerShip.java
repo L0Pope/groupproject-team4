@@ -1,13 +1,8 @@
 import java.awt.Color;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
-import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
-import acm.graphics.GOval;
 
 
 public class PlayerShip {
@@ -21,7 +16,6 @@ public class PlayerShip {
 	private final static int SPEED = 15;
 	private final static int WIDTH = 50;
 	private final static int HEIGHT = 50;
-	private boolean friendlyBullet = true;
 	private GLabel score = new GLabel ("Score: ", 10, 590);
 
 
@@ -36,12 +30,11 @@ public class PlayerShip {
 	public void update() {
 		updatePlayerBullet();
 		updatePlayerScore();
-//		removeBulletsOutOfBounds();
 	}
 	
 	
 	public void fireBullet(){
-		bullets.addBullet(new Bullet(x+12,y, -15, 1, friendlyBullet, screen));
+		bullets.addBullet(new Bullet(x+12,y, -15, 1, true, screen));
 	}
 	private void updatePlayerBullet() {
 		for(Bullet b: bullets.bullets) {
@@ -52,6 +45,7 @@ public class PlayerShip {
 	        score.setLabel("Score: " + playerScore.getScore());
 	 
 	}
+	
 	//Function creates playerShip and adds it to game screen
 	public void makePlayerShip() {
 		playerShip = new GImage("assets/sprites/UNIT002.gif", x, y);
@@ -65,7 +59,6 @@ public class PlayerShip {
 			score.setLabel("Score: " + playerScore.getScore());
 			score.setColor(Color.WHITE);
 			screen.add(score);
-			System.out.println(i);
 		}
 	}
 	

@@ -28,15 +28,4 @@ public class healthSystem {
 			isDestroyed = true;
 		}
 	}
-	
-	public static void main(String[] args) {
-		healthSystem somePlayerShip = new healthSystem(shipType.PLAYERSHIP, 3, false);
-		System.out.println("This test is going to test playerShip subtracting health!");
-		somePlayerShip.subtractHealth();
-		System.out.println("Health: " + somePlayerShip.getHealth());
-		System.out.println("This test is going to test and see if the ships boolean is set to destroyed!");
-		somePlayerShip.subtractHealth();
-		somePlayerShip.subtractHealth();
-		System.out.println("Is this destroyed?: " + somePlayerShip.isDestroyed());
-	}
 }

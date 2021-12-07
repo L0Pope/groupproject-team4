@@ -1,5 +1,4 @@
 import java.io.File;
-
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
@@ -19,8 +18,6 @@ public class JukeBox {
 			Audio.start();
 			FloatControl gameControl = (FloatControl)Audio.getControl(FloatControl.Type.MASTER_GAIN);
 			gameControl.setValue(-20.0f);
-			
-			//Thread.sleep(Audio.getMicrosecondLength()/1000);
 		}
 		catch (Exception e) {}
 	}

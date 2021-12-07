@@ -1,22 +1,12 @@
 import java.awt.Color;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
-import javax.swing.Timer;
-
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
-import acm.graphics.GObject;
-import acm.graphics.GOval;
 import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 import acm.util.RandomGenerator;
 
-public class enemyship extends GraphicsProgram implements ActionListener{
-    private Timer movement;
+public class enemyship extends GraphicsProgram {
     private RandomGenerator rgen;
     private GraphicsProgram screen;
     public shipType typeShip;
@@ -30,11 +20,8 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     public int numTimes = -1;
     public Boolean right = true;
     private int x, y;    
-    //private GRect enemy;
     public GImage enemy;
     public Bullets bullets;
-    private MainApplication program;
-    private boolean friendlyBullet = false;
     private ArrayList<GRect> bossHealthDisplay = new ArrayList<GRect>(20);
     private GRect overBossHealth;
     private GLabel nameBossHealth = new GLabel("Boss Health", 370 , 575);
@@ -62,11 +49,11 @@ public class enemyship extends GraphicsProgram implements ActionListener{
         updateBullet();
         int rand = rgen.nextInt(1500);
         if(typeShip == shipType.BOSSSHIP) {
-            if(rand < 100) {
+            if(rand < 200) {
                 fireBullet();
             }
         }else if(typeShip == shipType.ENEMYSHIP) {
-            if(rand <10)
+            if(rand < 15)
                 fireBullet();
         }
         }
@@ -77,37 +64,29 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     } 
     
     protected void finalize() {
-		//movement.stop();
 		bullets.clearBullet();
 	}
     
     public void fireBullet(){
-        bullets.addBullet(new Bullet(x,y, 5, 1, friendlyBullet, screen));
+        bullets.addBullet(new Bullet(x,y, 10, 1, false, screen));
     }  
     
     public void run() {
         rgen = RandomGenerator.getInstance();
-        //movement = new Timer(MS, this);
         makeBoss();
-        //movement.start();
-        //addMouseListeners();
     }
     
-    //Makes Single Grect that also has a timer associated with it
     public void makeEnemy() {
         enemy = new GImage("assets/sprites/badguy.gif", x, y);
         screen.add(enemy);
-        //movement = new Timer(MS, this);
-        //movement.start();
     }
     
     
     
     public void makeBoss() {
-        //This is just a temp for the boss
         enemy = new GImage("assets/sprites/boss.gif");
         bossHealth = new healthSystem(shipType.BOSSSHIP, 20, false);
-        screen.add(enemy); // enable this for game.java
+        screen.add(enemy); 
         for(int i = 150; i < 650; i += 25) {
         	bossHealthDisplay.add(new GRect(i, 575, 25, 25));
         }
@@ -130,14 +109,6 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     	
     }
     
-    //Calls to the Function that will move the enemies left and right
-    public void actionPerformed(ActionEvent e) {
-        numTimes ++;
-        moveEnemy();
-        // remove update from here
-        update();
-    }
-    
     //Utilizes the timer so that it will move left and right everytime the timer reaches 5
     public void moveEnemy() {
         if(typeShip == shipType.ENEMYSHIP) {
@@ -153,7 +124,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
             }
             if(right) {
                 x += 2;
-                enemy.move(2, 0);    //may have to change to check setlocation     
+                enemy.move(2, 0);       
             }
             if(!right) {
                 x +=-2;
@@ -161,7 +132,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
             }
         }
         else {
-            if(numTimes == 140) { // if x is at the end of screen switch
+            if(numTimes == 140) {
                 if(right) {
                     right = false;
                     numTimes = 0;
@@ -184,15 +155,10 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     
     //Call this to Delete the Gobject
     public void killEnemy(GraphicsProgram screen) {
-        System.out.println("Dead!");
         screen.remove(enemy);
     }
     
     public void init() {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-    }
-    
-    public static void main(String args[]) {
-        //new enemyship(shipType.BOSSSHIP, 20,50).start();
     }
 }

@@ -1,26 +1,20 @@
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
 public class SomePane extends GraphicsPane {
-    // you will use program to get access to all of the GraphicsProgram calls
     private MainApplication program; 
     private GImage background;
-    //private GImage img;
     private GButton returnToMenu;
     private GButton gameOver;
     private GButton winOver;
     private GButton winReturnToMenu;
-    private GLabel scores;
+    public GButton scores;
     public boolean death = false;
     public int score = 0;
 
-
-    //All of the comments are references to keep for our game.
     public SomePane(MainApplication app) {
     		this.program = app;
     		gameOver = new GButton("Game Over", 200, 20, 400, 300);
@@ -39,6 +33,9 @@ public class SomePane extends GraphicsPane {
         	winReturnToMenu.setColor(Color.WHITE);
         	winOver.setColor(Color.green);
         	
+        	scores = new GButton("Score: ", 285, 200, 100, 100);
+        	scores.setFillColor(new Color(0f,0f,0f,0f ));
+        	scores.setColor(Color.WHITE);
     }
     
     @Override
@@ -47,9 +44,13 @@ public class SomePane extends GraphicsPane {
     	if (!death) {
     		program.add(gameOver);
     		program.add(returnToMenu);
+    		scores.setText("Your score is: " + score);
+    		program.add(scores);
     	} else {
     		program.add(winOver);
     		program.add(winReturnToMenu);
+    		scores.setText("Your score is: " + score);
+    		program.add(scores);
     	}
     }
 
@@ -72,15 +73,4 @@ public class SomePane extends GraphicsPane {
             program.switchToMenu();
         }
     }
-
-   /* @Override
-    public void keyPressed(KeyEvent e) {
-      //  para.setText("You can\nleave this\nby pressing\n escape");
-       // para.setColor(Color.white);
-        if(e.getKeyCode() == 27) {
-            program.switchToMenu();
-            System.out.println("Switching to Main Menu");
-            JukeBox.STOP();
-        }
-    }*/
 }
