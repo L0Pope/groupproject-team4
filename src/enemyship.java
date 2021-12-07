@@ -161,7 +161,7 @@ public class enemyship extends GraphicsProgram implements ActionListener{
             }
         }
         else {
-            if(numTimes == 150) { // if x is at the end of screen switch
+            if(numTimes == 140) { // if x is at the end of screen switch
                 if(right) {
                     right = false;
                     numTimes = 0;
