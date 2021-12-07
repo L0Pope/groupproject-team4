@@ -103,7 +103,7 @@ public class Game extends GraphicsPane implements ActionListener{
             
         	for(Bullet b : playerShip.bullets.bullets) {
         		for(int i = 0; i < enemies.size(); i++) {
-            		if( ((enemies.get(i).getEnemyX() < b.returnBulletX()+15) && (b.returnBulletX()-10 < enemies.get(i).getEnemyX() + playerShip.getPlayerWidth()))	
+            		if( ((enemies.get(i).getEnemyX() < b.returnBulletX()+30) && (b.returnBulletX()-10 < enemies.get(i).getEnemyX() + playerShip.getPlayerWidth()))	
             		 && ((enemies.get(i).getEnemyY() < b.returnBulletY()+20) && (b.returnBulletY() < enemies.get(i).getEnemyY()+20 + playerShip.getPlayerHeight()))) {
             			 System.out.println("HIT!");
             	         b.setXY(20000,20000);
@@ -141,7 +141,7 @@ public class Game extends GraphicsPane implements ActionListener{
                 	&& ((bossShip.getEnemyY() < b.returnBulletY()+20) && (b.returnBulletY() < bossShip.getEnemyY()+20 + playerShip.getPlayerHeight()))) {
                 		System.out.println("HIT!");
                 		b.setXY(20000,20000);
-                		bossShip.bossHealth.subtractHealth();
+                		bossShip.subtractBossHealth();
                 		System.out.println(bossShip.bossHealth.getHealth());
                 		if(bossShip.bossHealth.isDestroyed() == true) {
                         	System.out.println("Boss is Dead"); //CALL GAME OVER
@@ -298,10 +298,10 @@ public class Game extends GraphicsPane implements ActionListener{
             program.add(pauseButton);
             timer.stop();
         }
-        if(key == KeyEvent.VK_P) {
+        /*if(key == KeyEvent.VK_P) {
         	JukeBox.STOP();
         	program.switchToMenu();
-        }
+        }*/
     }
     
     //Test Test

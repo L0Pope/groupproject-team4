@@ -35,6 +35,9 @@ public class enemyship extends GraphicsProgram implements ActionListener{
     public Bullets bullets;
     private MainApplication program;
     private boolean friendlyBullet = false;
+    private ArrayList<GRect> bossHealthDisplay = new ArrayList<GRect>(20);
+    private GRect overBossHealth;
+    private GLabel nameBossHealth = new GLabel("Boss Health", 370 , 575);
     
     //Each EnemyShip has its own coordinates, use x and y to locate it 
     public enemyship(shipType typeShip, int x, int y, GraphicsProgram screen) { //location of the ship
@@ -105,6 +108,26 @@ public class enemyship extends GraphicsProgram implements ActionListener{
         enemy = new GImage("assets/sprites/boss.gif");
         bossHealth = new healthSystem(shipType.BOSSSHIP, 20, false);
         screen.add(enemy); // enable this for game.java
+        for(int i = 150; i < 650; i += 25) {
+        	bossHealthDisplay.add(new GRect(i, 575, 25, 25));
+        }
+        for (int i = 0; i < 20; i++) {
+        	bossHealthDisplay.get(i).setColor(Color.RED);
+        	bossHealthDisplay.get(i).setFilled(true);
+        	screen.add(bossHealthDisplay.get(i));
+        }
+        overBossHealth = new GRect(150, 575, 500, 25);
+        overBossHealth.setColor(Color.WHITE);
+        screen.add(overBossHealth);
+        nameBossHealth.setColor(Color.WHITE);
+        screen.add(nameBossHealth);
+    }
+    
+    public void subtractBossHealth() {
+    	screen.remove(bossHealthDisplay.get(bossHealthDisplay.size()-1));
+    	bossHealthDisplay.remove(bossHealthDisplay.size()-1);
+    	bossHealth.subtractHealth();
+    	
     }
     
     //Calls to the Function that will move the enemies left and right
