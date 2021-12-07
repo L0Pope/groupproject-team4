@@ -15,7 +15,9 @@ public class SomePane extends GraphicsPane {
     private GButton gameOver;
     private GButton winOver;
     private GButton winReturnToMenu;
+    private GLabel scores;
     public boolean death = false;
+    public int score = 0;
 
 
     //All of the comments are references to keep for our game.
@@ -36,6 +38,7 @@ public class SomePane extends GraphicsPane {
         	winReturnToMenu.setFillColor(new Color(0f, 0.9f, 0f, 0.2f));
         	winReturnToMenu.setColor(Color.WHITE);
         	winOver.setColor(Color.green);
+        	
     }
     
     @Override
@@ -59,13 +62,13 @@ public class SomePane extends GraphicsPane {
     		program.remove(winOver);
     		program.remove(winReturnToMenu);
     	}
-    	JukeBox.STOP();
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
         GObject obj = program.getElementAt(e.getX(), e.getY());
         if (obj == returnToMenu || obj == winReturnToMenu) {
+        	JukeBox.STOP();
             program.switchToMenu();
         }
     }
