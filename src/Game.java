@@ -38,7 +38,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	private final int BUTTON_SIZE_Y = 100;
 	private final int STATIC_ADDER = 50;
 	private GButton DEAD;
-	private Boolean playerDead = false;
+	private Boolean gameOver = false;
     //private boolean moveSpawnedBoss = false;
 
     //private static final int SPEED = 5;
@@ -93,7 +93,7 @@ public class Game extends GraphicsPane implements ActionListener{
                             if(playerShip.playerShipHealth.isDestroyed() == true) {
                             	System.out.println("Player is Dead"); //CALL GAME OVER
                             	//program.switchToSome();
-                            	playerDead = true;
+                            	gameOver = true;
                             	//JukeBox.STOP();
                             	return;
                             }
@@ -130,7 +130,7 @@ public class Game extends GraphicsPane implements ActionListener{
                         	System.out.println("Player is Dead"); //CALL GAME OVER
                         	//program.switchToSome();
                         	//JukeBox.STOP();
-                        	playerDead = true;
+                        	gameOver = true;
                         	return;
                         }
                     }        
@@ -147,7 +147,7 @@ public class Game extends GraphicsPane implements ActionListener{
                 		if(bossShip.bossHealth.isDestroyed() == true) {
                         	System.out.println("Boss is Dead"); //CALL GAME OVER
                         	playerShip.playerScore.calculateKilledBoss(playerShip.playerScore.getScore(), playerShip.playerShipHealth.getHealth());
-                        	playerDead = true;
+                        	gameOver = true;
                         	//program.switchToSome();
                         	//JukeBox.STOP();
                         }
@@ -262,7 +262,7 @@ public class Game extends GraphicsPane implements ActionListener{
     	}
     	timer.stop();
     	bossSpawned = false;
-    	playerDead = false;
+    	gameOver = false;
     	
     }
     
@@ -314,7 +314,7 @@ public class Game extends GraphicsPane implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    	if(!playerDead) {
+    	if(!gameOver) {
 	        // TODO Auto-generated method stub
 	        playerShip.update();
 	        updateAllBullets();
