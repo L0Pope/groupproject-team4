@@ -3,6 +3,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import acm.graphics.GImage;
+import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
 public class SomePane extends GraphicsPane {
@@ -10,50 +11,51 @@ public class SomePane extends GraphicsPane {
     private MainApplication program; 
     private GImage background;
     //private GImage img;
-    private GParagraph para;
+    private GButton returnToMenu;
+    private GButton gameOver;
+
 
     //All of the comments are references to keep for our game.
     public SomePane(MainApplication app) {
         this.program = app;
-        //img = new GImage("robot head.jpg", 100, 100); 
-        para = new GParagraph("Play Game", 150, 300);
-        para.setFont("Arial MS-24");
+        gameOver = new GButton("Game Over", 200, 20, 400, 300);
+        returnToMenu = new GButton("Back to menu", 300, 300, 200, 100);
         background = new GImage("assets/sprites/animatedMenu.gif");
-        para.setColor(Color.WHITE);
+        gameOver.setFillColor(new Color(0f,0f,0f,0f ));
+        returnToMenu.setFillColor(new Color(0.9f, 0f, 0f, 0.2f));
+        returnToMenu.setColor(Color.WHITE);
+        gameOver.setColor(Color.red);
     }
-
+    
     @Override
     public void showContents() {
-        //program.add(img);
         program.add(background);
-        program.add(para);
+        program.add(gameOver);
+        program.add(returnToMenu);
     }
 
     @Override
     public void hideContents() {
-        //program.remove(img);
-        program.remove(para);
+        program.remove(gameOver);
+        program.remove(returnToMenu);
     }
 
-    /*
     @Override
     public void mousePressed(MouseEvent e) {
-        para.setText("you need\nto click\non the eyes\nto go back");
         GObject obj = program.getElementAt(e.getX(), e.getY());
-        if (obj == img) {
+        if (obj == returnToMenu) {
             program.switchToMenu();
         }
     }
-    */
 
-    @Override
+   /* @Override
     public void keyPressed(KeyEvent e) {
-        para.setText("You can\nleave this\nby pressing\n escape");
-        para.setColor(Color.white);
+      //  para.setText("You can\nleave this\nby pressing\n escape");
+       // para.setColor(Color.white);
         if(e.getKeyCode() == 27) {
             program.switchToMenu();
             System.out.println("Switching to Main Menu");
             JukeBox.STOP();
         }
-    }
+    }*/
 }

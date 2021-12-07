@@ -142,8 +142,6 @@ public class MainApplication extends GraphicsProgram {
 	}
 
 	public void switchToSome() {
-		JukeBox.STOP();
-		JukeBox.PLAY(yes);
 		switchToScreen(somePane);
 		game = !game;
 	}
