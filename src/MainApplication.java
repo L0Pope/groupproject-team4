@@ -22,7 +22,7 @@ public class MainApplication extends GraphicsProgram {
 	private SettingPane setting;
 	private HighScore HighScore;
 	private Game gameScreen;
-	private boolean game = true;
+	private boolean game = false;
 	
 	/* Method: setupInteractions
 	 * -------------------------
@@ -127,13 +127,11 @@ public class MainApplication extends GraphicsProgram {
 	public void switchToSetting() {
 		JukeBox.STOP();
 		switchToScreen(setting);
-		game = !game;
 		JukeBox.PLAY(test);
 	}
 	
 	public void switchToMenu() {
 		switchToScreen(menu);
-		game = !game;
 		JukeBox.PLAY(menuBGM);
 		
 	}
@@ -141,7 +139,6 @@ public class MainApplication extends GraphicsProgram {
 	public void switchToSome() {
 		somePane.death = gameScreen.bossDead;
 		switchToScreen(somePane);
-		game = !game;
 	}
 	
 	public void switchToPlay() {
@@ -153,8 +150,10 @@ public class MainApplication extends GraphicsProgram {
 	
 	public void switchToHighScore() {
 		JukeBox.STOP();
+		if(game) {
+			HighScore.setScore(gameScreen.playerShip.playerScore.getScore());
+		}
 		switchToScreen(HighScore);
-		game = !game;
 		JukeBox.PLAY(test);
 	}
 	
@@ -202,6 +201,10 @@ public class MainApplication extends GraphicsProgram {
 	
 	public int getShoot() {
 		return setting.getShootLoc();
+	}
+	
+	public boolean getGame() {
+		return game;
 	}
 
 }
