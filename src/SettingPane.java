@@ -43,7 +43,7 @@ public class SettingPane extends GraphicsPane {
 	private char Down = 'S';
 	private char Right = 'D';
 	private char Shoot = 'K';
-	private int ShootLoc = 75;
+	private int ShootLoc = 32;
 	private int ForwardLoc = 87;
 	private int LeftLoc = 65;
 	private int DownLoc = 83;
@@ -74,7 +74,7 @@ public class SettingPane extends GraphicsPane {
 		rect4 = new GButton(Right, 259, BUTTON_POS_Y+135, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
 		para4 = new GParagraph("Right", 404, BUTTON_POS_Y+160);
 		rect5 = new GButton(Shoot, 259, BUTTON_POS_Y+180, BUTTON_SIZE_X/3, BUTTON_SIZE_Y/5);
-		rect5.setText("K");
+		rect5.setText("Space");
 		para5 = new GParagraph("Shoot", 404, BUTTON_POS_Y+205);
 		para5.setFont("Arial MS-24");
 		para4.setFont("Arial MS-24");

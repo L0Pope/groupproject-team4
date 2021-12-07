@@ -13,37 +13,59 @@ public class SomePane extends GraphicsPane {
     //private GImage img;
     private GButton returnToMenu;
     private GButton gameOver;
+    private GButton winOver;
+    private GButton winReturnToMenu;
+    public boolean death = false;
 
 
     //All of the comments are references to keep for our game.
     public SomePane(MainApplication app) {
-        this.program = app;
-        gameOver = new GButton("Game Over", 200, 20, 400, 300);
-        returnToMenu = new GButton("Back to menu", 300, 300, 200, 100);
-        background = new GImage("assets/sprites/animatedMenu.gif");
-        gameOver.setFillColor(new Color(0f,0f,0f,0f ));
-        returnToMenu.setFillColor(new Color(0.9f, 0f, 0f, 0.2f));
-        returnToMenu.setColor(Color.WHITE);
-        gameOver.setColor(Color.red);
+    		this.program = app;
+    		gameOver = new GButton("Game Over", 200, 20, 400, 300);
+    		returnToMenu = new GButton("Back to menu", 300, 300, 200, 100);
+    		background = new GImage("assets/sprites/animatedMenu.gif");
+        	gameOver.setFillColor(new Color(0f,0f,0f,0f ));
+        	returnToMenu.setFillColor(new Color(0.9f, 0f, 0f, 0.2f));
+        	returnToMenu.setColor(Color.WHITE);
+        	gameOver.setColor(Color.red);
+
+    		winOver = new GButton("You Win!", 200, 20, 400, 300);
+    		winReturnToMenu = new GButton("Back to menu", 300, 300, 200, 100);
+    		background = new GImage("assets/sprites/animatedMenu.gif");
+        	winOver.setFillColor(new Color(0f,0f,0f,0f ));
+        	winReturnToMenu.setFillColor(new Color(0f, 0.9f, 0f, 0.2f));
+        	winReturnToMenu.setColor(Color.WHITE);
+        	winOver.setColor(Color.green);
     }
     
     @Override
     public void showContents() {
         program.add(background);
-        program.add(gameOver);
-        program.add(returnToMenu);
+    	if (!death) {
+    		program.add(gameOver);
+    		program.add(returnToMenu);
+    	} else {
+    		program.add(winOver);
+    		program.add(winReturnToMenu);
+    	}
     }
 
     @Override
     public void hideContents() {
-        program.remove(gameOver);
-        program.remove(returnToMenu);
+    	if (!death) {
+    		program.remove(gameOver);
+    		program.remove(returnToMenu);
+    	} else {
+    		program.remove(winOver);
+    		program.remove(winReturnToMenu);
+    	}
+    	JukeBox.STOP();
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
         GObject obj = program.getElementAt(e.getX(), e.getY());
-        if (obj == returnToMenu) {
+        if (obj == returnToMenu || obj == winReturnToMenu) {
             program.switchToMenu();
         }
     }

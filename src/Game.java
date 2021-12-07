@@ -39,6 +39,7 @@ public class Game extends GraphicsPane implements ActionListener{
 	private final int STATIC_ADDER = 50;
 	private GButton DEAD;
 	private Boolean gameOver = false;
+	public Boolean bossDead = false;
     //private boolean moveSpawnedBoss = false;
 
     //private static final int SPEED = 5;
@@ -147,6 +148,7 @@ public class Game extends GraphicsPane implements ActionListener{
                 		if(bossShip.bossHealth.isDestroyed() == true) {
                         	System.out.println("Boss is Dead"); //CALL GAME OVER
                         	playerShip.playerScore.calculateKilledBoss(playerShip.playerScore.getScore(), playerShip.playerShipHealth.getHealth());
+                        	bossDead = true;
                         	gameOver = true;
                         	//program.switchToSome();
                         	//JukeBox.STOP();
