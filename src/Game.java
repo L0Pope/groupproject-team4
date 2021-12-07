@@ -21,6 +21,8 @@ public class Game extends GraphicsPane implements ActionListener{
     
     File Game = new File("assets/bgm/fight!.wav");
     File menu = new File("assets/bgm/MENU.wav");
+    File pauseGame = new File("assets/bgm/CONFIRMATION.wav");
+    File unpauseGame = new File("assets/bgm/BACK.wav");
     
     private GImage backround;
     private MainApplication program;
@@ -233,6 +235,7 @@ public class Game extends GraphicsPane implements ActionListener{
     	GObject obj = program.getElementAt(e.getX(), e.getY());
     	if (obj == pauseButton) {
   		  program.remove(pauseButton);
+  		  JukeBox.PLAY(unpauseGame);
   		  timer.start();
   		  pause = false;
 		}
@@ -300,6 +303,7 @@ public class Game extends GraphicsPane implements ActionListener{
             program.switchToMenu();
             */
             program.add(pauseButton);
+            JukeBox.PLAY(pauseGame);
             timer.stop();
         }
         /*if(key == KeyEvent.VK_P) {

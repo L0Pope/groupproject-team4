@@ -7,8 +7,9 @@ import acm.program.GraphicsProgram;
 public class MainApplication extends GraphicsProgram {
 	
 	File menuBGM = new File ("assets/bgm/Menu.wav");
-	File test = new File ("assets/bgm/TestAudio.wav");
+	File settings = new File ("assets/bgm/TestAudio.wav");
 	File Game = new File("assets/bgm/fight!.wav");
+	File Confirmation = new File("assets/bgm/CONFIRMATION.wav");
 	
 	//public static final int WINDOW_WIDTH = 1920;
 	public static final int WINDOW_WIDTH = 800;
@@ -127,8 +128,9 @@ public class MainApplication extends GraphicsProgram {
 	public void switchToSetting() {
 		JukeBox.STOP();
 		switchToScreen(setting);
+		JukeBox.PLAY(Confirmation);
 		game = !game;
-		JukeBox.PLAY(test);
+		JukeBox.PLAY(settings);
 	}
 	
 	public void switchToMenu() {
@@ -146,6 +148,7 @@ public class MainApplication extends GraphicsProgram {
 	
 	public void switchToPlay() {
 		JukeBox.STOP();
+		JukeBox.PLAY(Confirmation);
 		switchToScreen(gameScreen);
 		game = true;
 		JukeBox.PLAY(Game);
@@ -154,8 +157,9 @@ public class MainApplication extends GraphicsProgram {
 	public void switchToHighScore() {
 		JukeBox.STOP();
 		switchToScreen(HighScore);
+		JukeBox.PLAY(Confirmation);
 		game = !game;
-		JukeBox.PLAY(test);
+		JukeBox.PLAY(settings);
 	}
 	
 	/*
