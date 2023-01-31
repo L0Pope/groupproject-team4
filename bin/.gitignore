@@ -1,13 +1,11 @@
 /Bullet.class
 /Bullets.class
 /Displayable.class
-/Entity.class
 /GButton.class
 /GParagraph.class
 /Game.class
 /GraphicsPane.class
 /HighScore.class
-/Hitbox.class
 /Interfaceable.class
 /JukeBox.class
 /MainApplication.class
