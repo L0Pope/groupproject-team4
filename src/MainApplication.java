@@ -135,6 +135,7 @@ public class MainApplication extends GraphicsProgram {
 		JukeBox.STOP();
 		if(game) {
 			HighScore.setScore(gameScreen.playerShip.playerScore.getScore());
+			HighScore.setInitial(somePane.getInitials());
 		}
 		switchToScreen(HighScore);
 		JukeBox.PLAY(test);

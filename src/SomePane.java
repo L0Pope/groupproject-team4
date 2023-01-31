@@ -47,6 +47,10 @@ public class SomePane extends GraphicsPane {
         	scores.setColor(Color.WHITE);
     }
     
+    public String getInitials() {
+    	return FullName;
+    }
+    
     @Override
     public void showContents() {
         program.add(background);

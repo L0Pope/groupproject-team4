@@ -17,11 +17,12 @@ public class HighScore extends GraphicsPane {
 	private final int BUTTON_SIZE_Y = 200;
 	private final int BUTTON_POS_Y = 100;
     public int Score;
+    public String Initial;
     private int F1 = 81000;
     private int F2 = 74560;
     private int F3 = 69000;
-    private int F4 = 42000;
-    private int F5 = 25300;
+    private int F4 = 20000;
+    private int F5 = 5000;
     
     File back = new File ("assets/bgm/BACK.wav");
 
@@ -29,6 +30,9 @@ public class HighScore extends GraphicsPane {
     
     public void setScore(int Score) {
     	this.Score = Score;
+    }
+    public void setInitial (String Initial) {
+    	this.Initial = Initial;
     }
     
     public HighScore(MainApplication app) {
@@ -62,33 +66,33 @@ public class HighScore extends GraphicsPane {
         program.add(score3);
         program.add(score4);
         program.add(score5);
-        score.setText("" + F1);
-        score2.setText("" + F2);
-        score3.setText("" + F3);
-        score4.setText("" + F4);
-        score5.setText("" + F5);
+        score.setText("POP " + F1);
+        score2.setText("COL " + F2);
+        score3.setText("ASD " + F3);
+        score4.setText("NAE " + F4);
+        score5.setText("TOA " + F5);
         if(Score > F1) {
-            score.setText("" + Score);
+            score.setText(Initial + " " + Score);
             F1 = Score;
             program.add(score);
         }
         else if(Score > F2) {
-        	score2.setText("" + Score);
+        	score2.setText(Initial +" " + Score);
         	F2 = Score;
         	program.add(score2);
         }
         else if(Score > F3) {
-        	score3.setText("" + Score);
+        	score3.setText(Initial + " " + Score);
         	F3 = Score;
         	program.add(score3);
         }
         else if(Score > F4) {
-        	score4.setText("" + Score);
+        	score4.setText(Initial + " " + Score);
         	F4 = Score;
         	program.add(score4);
         }
         else if(Score > F5) {
-        	score5.setText("" + Score);
+        	score5.setText(Initial + " " + Score);
         	F5 = Score;
         	program.add(score5);
         }
