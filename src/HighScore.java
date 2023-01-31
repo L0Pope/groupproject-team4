@@ -13,7 +13,7 @@ public class HighScore extends GraphicsPane {
     private GButton score4;
     private GButton score5;
     private GButton box1;
-	private final int BUTTON_SIZE_X = 300;
+	private final int BUTTON_SIZE_X = 400;
 	private final int BUTTON_SIZE_Y = 200;
 	private final int BUTTON_POS_Y = 100;
     public int Score;

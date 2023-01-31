@@ -15,6 +15,7 @@ public class SomePane extends GraphicsPane {
     private boolean names = false;
     private char input;
     private String FullName = "";
+    private int count = 0;
     public GButton scores;
     public GButton name;
     public boolean death = false;
@@ -96,7 +97,10 @@ public class SomePane extends GraphicsPane {
 		if(names) {
 			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122))){
 				input = e.getKeyChar();;
-				FullName += input;
+				if (count < 3){
+					FullName += input;
+					count++;
+				}
 				name.setText(FullName);
 				names = !names;
 			}
