@@ -39,7 +39,7 @@ public class SomePane extends GraphicsPane {
         	winReturnToMenu.setColor(Color.WHITE);
         	winOver.setColor(Color.green);
         	
-        	name = new GButton ("Please Input Name", 200, 200, 100, 100);
+        	name = new GButton ("Please Input Name", 100, 200, 100, 100);
         	name.setFillColor(new Color(0f,0f,0f,0f ));
         	name.setColor(Color.WHITE);
         	
