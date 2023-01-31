@@ -14,7 +14,7 @@ public class SomePane extends GraphicsPane {
     private GButton winReturnToMenu;
     private boolean names = false;
     private char input;
-    private String FullName = "test";
+    private String FullName = "";
     public GButton scores;
     public GButton name;
     public boolean death = false;
