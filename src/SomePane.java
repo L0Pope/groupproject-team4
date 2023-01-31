@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
@@ -11,7 +12,11 @@ public class SomePane extends GraphicsPane {
     private GButton gameOver;
     private GButton winOver;
     private GButton winReturnToMenu;
+    private boolean names = false;
+    private char input;
+    private String FullName = "test";
     public GButton scores;
+    public GButton name;
     public boolean death = false;
     public int score = 0;
 
@@ -33,8 +38,12 @@ public class SomePane extends GraphicsPane {
         	winReturnToMenu.setColor(Color.WHITE);
         	winOver.setColor(Color.green);
         	
+        	name = new GButton ("Please Input Name", 200, 200, 100, 100);
+        	name.setFillColor(new Color(0f,0f,0f,0f ));
+        	name.setColor(Color.WHITE);
+        	
         	scores = new GButton("Score: ", 285, 200, 100, 100);
-        	scores.setFillColor(new Color(0f,0f,0f,0f ));
+        	scores.setFillColor(new Color(0.9f,0f,0f,0f ));
         	scores.setColor(Color.WHITE);
     }
     
@@ -46,11 +55,13 @@ public class SomePane extends GraphicsPane {
     		program.add(returnToMenu);
     		scores.setText("Your score is: " + score);
     		program.add(scores);
+    		program.add(name);
     	} else {
     		program.add(winOver);
     		program.add(winReturnToMenu);
     		scores.setText("Your score is: " + score);
     		program.add(scores);
+    		program.add(name);
     	}
     }
 
@@ -68,9 +79,23 @@ public class SomePane extends GraphicsPane {
     @Override
     public void mousePressed(MouseEvent e) {
         GObject obj = program.getElementAt(e.getX(), e.getY());
+        if (obj == name) {
+        	names = true;
+        }
         if (obj == returnToMenu || obj == winReturnToMenu) {
         	JukeBox.STOP();
             program.switchToMenu();
         }
+    }
+    
+    public void keyPressed(KeyEvent e) {
+		if(names) {
+			if(((e.getKeyCode() >= 65 && e.getKeyCode() <= 90) || (e.getKeyCode() >= 97 && e.getKeyCode() <= 122))){
+				input = e.getKeyChar();;
+				FullName += input;
+				name.setText(FullName);
+				names = !names;
+			}
+		} 
     }
 }
